@@ -26,16 +26,20 @@ confidence (stat strips, spec tables).
 | `--color-accent` | `#0b6289` | Eyebrows and links on paper (AA) |
 | `--color-accent-soft` | `#4aa8d4` | Eyebrows and links on ink (AA) |
 
-**Type: Archivo + Bodoni Moda.** Archivo (grotesk) carries display and body.
-Micro-labels — eyebrows, nav, buttons, chips, table keys — are Bodoni Moda set
-small, uppercase and tracked out at `0.15em` via the `.label` class. That is the
-same Didone family as the wordmark in the official logo, so the labels read as
-part of the lockup; the variable optical-size axis keeps the hairlines sturdy at
-12px. No monospace anywhere.
+**Type: Archivo + Inter.** Archivo carries display headings only. Inter carries
+body copy and all micro-type — eyebrows, nav, buttons, chips, table keys — set
+mixed case at 13px via the `.label` class, barely tracked. Following
+[coffee-tech.com](https://www.coffee-tech.com/), which is Inter throughout: quiet
+UI text reads as calmer and more modern than tracked-out capitals.
+
+Section eyebrows are bracketed — `[ 02 — Core capabilities ]` — via the
+`Eyebrow` component, another pattern taken from the same reference.
 
 Shared primitives in `globals.css` keep spacing consistent: `.shell` (one
 horizontal gutter for every section), `.section-y` (one vertical rhythm), `.btn`
-and `.chip` (one pill geometry so controls always line up).
+and `.chip` (one pill geometry so controls always line up), `.frame` (10px
+rounded corners for every photograph and panel) and `.link-xl` (the oversized
+underlined arrow link used to close a section).
 
 ## Structure
 
@@ -54,6 +58,8 @@ src/
     site-footer.tsx     marquee, sitemap, facilities, compliance
     page-hero.tsx       shared inner-page opener
     section-heading.tsx one heading pattern for every section
+    eyebrow.tsx         bracketed section eyebrow
+    big-link.tsx        oversized underlined arrow link
     service-nav.tsx     sticky in-page nav for the services sections
     enquiry-form.tsx    validated contact form
     logo.tsx            official lockup, dark + light variants

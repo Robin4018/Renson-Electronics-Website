@@ -22,8 +22,10 @@
   --color-accent-soft: #4aa8d4; /* AA on ink */
 
   --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-label: var(--font-bodoni), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-frame: 10px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -64,22 +66,47 @@
 }
 
 @layer components {
-  /* Editorial micro-label — Didone caps, echoing the logo wordmark. The
-     variable optical-size axis keeps the hairlines sturdy at this size. */
+  /* Micro-label — Inter, mixed case, barely tracked. Reads as quiet UI text
+     rather than shouted caps. */
   .label {
     font-family: var(--font-label);
-    font-size: 0.75rem;
-    line-height: 1.15;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-size: 0.8125rem;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
     font-weight: 500;
-    font-variant-numeric: lining-nums;
-    font-optical-sizing: auto;
   }
 
   .label-lg {
-    font-size: 0.8125rem;
-    letter-spacing: 0.13em;
+    font-size: 0.875rem;
+  }
+
+  /* Rounded frame for images and cards. */
+  .frame {
+    border-radius: var(--radius-frame);
+    overflow: hidden;
+  }
+
+  /* Oversized underlined link with a travelling arrow. */
+  .link-xl {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.6em;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .link-xl svg,
+  .link-xl .arrow {
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+
+  .link-xl:hover .arrow {
+    transform: translateX(0.25em);
   }
 
   .display-xl {
@@ -151,7 +178,7 @@
     align-items: center;
     gap: 0.75rem;
     border-radius: 9999px;
-    padding: 1rem 1.75rem;
+    padding: 0.875rem 1.5rem;
     transition:
       background-color 0.35s ease,
       border-color 0.35s ease,
@@ -163,7 +190,7 @@
     align-items: center;
     border-radius: 9999px;
     border: 1px solid var(--color-line);
-    padding: 0.5rem 0.875rem;
+    padding: 0.4375rem 0.8125rem;
     transition:
       border-color 0.3s ease,
       color 0.3s ease;

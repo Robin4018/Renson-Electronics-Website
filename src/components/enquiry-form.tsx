@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { company, serviceCategories } from "@/lib/content";
+import { Eyebrow } from "./eyebrow";
 
 type Fields = {
   name: string;
@@ -79,8 +80,8 @@ export function EnquiryForm() {
 
   if (sent) {
     return (
-      <div className="border border-line bg-paper p-8 md:p-10">
-        <p className="label text-accent">Enquiry ready</p>
+      <div className="rounded-[10px] border border-line bg-paper p-8 md:p-10">
+        <Eyebrow className="text-accent">Enquiry ready</Eyebrow>
         <h3 className="display-md mt-6">Your email is open.</h3>
         <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink/70">
           We&rsquo;ve composed the enquiry in your mail client — send it and
@@ -116,8 +117,8 @@ export function EnquiryForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="border border-line bg-paper p-8 md:p-10">
-      <p className="label text-accent">Send an enquiry</p>
+    <form onSubmit={onSubmit} noValidate className="rounded-[10px] border border-line bg-paper p-8 md:p-10">
+      <Eyebrow className="text-accent">Send an enquiry</Eyebrow>
       <h3 className="display-md mt-6">Tell us what you need.</h3>
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2">

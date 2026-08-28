@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal, MaskLine } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { Eyebrow } from "@/components/eyebrow";
+import { BigLink } from "@/components/big-link";
 import { Counter } from "@/components/counter";
 import {
   company,
@@ -162,13 +164,13 @@ export default function HomePage() {
           <div className="md:col-span-4 lg:col-span-3">
             <div className="md:sticky md:top-32">
               <Reveal>
-                <p className="label text-accent">01 — What we do</p>
+                <Eyebrow className="text-accent">01 — What we do</Eyebrow>
               </Reveal>
               <div className="mt-8 hidden md:block">
                 <Reveal
                   variant="clip"
                   delay={200}
-                  className="relative block aspect-[2/3] w-full max-w-[240px] overflow-hidden"
+                  className="frame relative block aspect-[2/3] w-full max-w-[240px]"
                 >
                   <Image
                     src="/images/spray-gun.jpg"
@@ -215,7 +217,7 @@ export default function HomePage() {
 
             <Reveal
               delay={260}
-              className="mt-14 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3"
+              className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line sm:grid-cols-3"
             >
               {[
                 ["80,000 sq ft", "Company-owned land"],
@@ -255,7 +257,7 @@ export default function HomePage() {
                     <h3 className="display-md">{item.title}</h3>
                   </div>
 
-                  <div className="relative aspect-[4/3] w-full overflow-hidden md:col-span-3">
+                  <div className="frame relative aspect-[4/3] w-full md:col-span-3">
                     <Image
                       src={item.image}
                       alt={item.title}
@@ -291,6 +293,10 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={140} className="mt-14">
+            <BigLink href="/services">See all services</BigLink>
+          </Reveal>
         </div>
       </section>
 
@@ -300,7 +306,7 @@ export default function HomePage() {
           <div className="md:col-span-4">
             <div className="md:sticky md:top-32">
               <Reveal>
-                <p className="label text-accent">03 — The standard</p>
+                <Eyebrow className="text-accent">03 — The standard</Eyebrow>
                 <h2 className="display-lg mt-6">
                   Ten steps.
                   <br />
@@ -311,7 +317,7 @@ export default function HomePage() {
                   inward inspection to a 205&ndash;215&deg;C cure and final
                   dispatch within 48 hours of clearance.
                 </p>
-                <div className="mt-9 inline-flex items-baseline gap-4 border border-line px-6 py-4">
+                <div className="mt-9 inline-flex items-baseline gap-4 rounded-[10px] border border-line px-6 py-4">
                   <span className="font-display text-3xl tracking-tight">
                     205&ndash;215&deg;C
                   </span>
@@ -357,7 +363,7 @@ export default function HomePage() {
           <Reveal
             variant="clip"
             delay={120}
-            className="relative mt-14 block aspect-[16/9] w-full overflow-hidden md:mt-20 md:aspect-[24/9]"
+            className="frame relative mt-14 block aspect-[16/9] w-full md:mt-20 md:aspect-[24/9]"
           >
             <Image
               src="/images/facility.jpg"
@@ -423,7 +429,7 @@ export default function HomePage() {
           <div className="md:col-span-6">
             <Reveal
               variant="clip"
-              className="relative block aspect-[4/3] w-full overflow-hidden"
+              className="frame relative block aspect-[4/3] w-full"
             >
               <Image
                 src="/images/finishes.jpg"
@@ -437,7 +443,7 @@ export default function HomePage() {
 
           <div className="md:col-span-5 md:col-start-8">
             <Reveal>
-              <p className="label text-accent">05 — Colour &amp; finish</p>
+              <Eyebrow className="text-accent">05 — Colour &amp; finish</Eyebrow>
               <h2 className="display-lg mt-6">
                 Any shade.
                 <br />
@@ -475,7 +481,7 @@ export default function HomePage() {
             intro="Nearly four decades of manufacturing experience and two purpose-built facilities that industry leaders depend on."
           />
 
-          <div className="mt-14 grid gap-px border border-line bg-line md:mt-20 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-20 md:grid-cols-2 lg:grid-cols-4">
             {differentiators.map((item, i) => (
               <Reveal
                 key={item.index}
@@ -508,7 +514,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-12">
             <div className="md:col-span-7">
               <Reveal variant="lines">
-                <p className="label mb-7 text-accent-soft">Get in touch</p>
+                <Eyebrow className="mb-7 text-accent-soft">Get in touch</Eyebrow>
                 <h2 className="display-lg">
                   <MaskLine>Ready to start</MaskLine>
                   <MaskLine delay={100}>your project?</MaskLine>

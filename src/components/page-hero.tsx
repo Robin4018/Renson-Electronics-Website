@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { Reveal, MaskLine } from "./reveal";
+import { Eyebrow } from "./eyebrow";
 
 /**
  * Shared inner-page opener: meta row, hairline, oversized title, intro column
@@ -26,7 +27,7 @@ export function PageHero({
     <section className="relative pt-32 md:pt-40 lg:pt-48">
       <div className="shell">
         <Reveal className="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-2 pb-7">
-          <p className="label text-accent">{eyebrow}</p>
+          <Eyebrow className="text-accent">{eyebrow}</Eyebrow>
           {meta ? <p className="label hidden text-muted sm:block">{meta}</p> : null}
         </Reveal>
 

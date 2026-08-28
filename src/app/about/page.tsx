@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { Eyebrow } from "@/components/eyebrow";
 import { Reveal, MaskLine } from "@/components/reveal";
 import { company, timeline, leadership, divisions, principles, units } from "@/lib/content";
 
@@ -32,7 +33,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-12">
           <div className="md:col-span-5">
             <Reveal>
-              <p className="label text-accent">01 — Our story</p>
+              <Eyebrow className="text-accent">01 — Our story</Eyebrow>
             </Reveal>
             <Reveal variant="lines" className="mt-6">
               <h2 className="display-lg">
@@ -46,7 +47,7 @@ export default function AboutPage() {
             <Reveal
               variant="clip"
               delay={200}
-              className="relative mt-12 block aspect-[4/3] w-full overflow-hidden"
+              className="frame relative mt-12 block aspect-[4/3] w-full"
             >
               <Image
                 src="/images/workshop.jpg"
@@ -126,7 +127,7 @@ export default function AboutPage() {
             intro="Two generations of engineers, one standard of execution held across every division."
           />
 
-          <div className="mt-14 grid gap-px border border-line bg-line md:mt-20 md:grid-cols-2">
+          <div className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-20 md:grid-cols-2">
             {leadership.map((person, i) => (
               <Reveal key={person.name} delay={i * 110} className="bg-paper-dim p-8 md:p-10">
                 <div className="flex items-start gap-5">
@@ -270,7 +271,7 @@ export default function AboutPage() {
           lines={["What we hold", "ourselves to."]}
         />
 
-        <div className="mt-14 grid gap-px border border-line bg-line md:mt-20 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-20 md:grid-cols-2 lg:grid-cols-4">
           {principles.map((principle, i) => (
             <Reveal
               key={principle.index}

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Reveal, MaskLine } from "./reveal";
+import { Eyebrow } from "./eyebrow";
 
 /**
  * One heading pattern for every section: eyebrow, two masked display lines and
@@ -27,7 +28,7 @@ export function SectionHeading({
       className={`flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-16 ${className}`.trim()}
     >
       <Reveal variant="lines" className="max-w-2xl">
-        <p className={`label mb-6 ${eyebrowTone}`}>{eyebrow}</p>
+        <Eyebrow className={`mb-6 ${eyebrowTone}`}>{eyebrow}</Eyebrow>
         <h2 className="display-lg">
           <MaskLine>{lines[0]}</MaskLine>
           {lines[1] ? <MaskLine delay={100}>{lines[1]}</MaskLine> : null}

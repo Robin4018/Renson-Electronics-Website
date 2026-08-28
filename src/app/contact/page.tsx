@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { Eyebrow } from "@/components/eyebrow";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { Reveal } from "@/components/reveal";
 import { company, units } from "@/lib/content";
@@ -58,7 +59,7 @@ export default function ContactPage() {
 
           <div className="md:col-span-5">
             <Reveal delay={140}>
-              <p className="label text-accent">01 — Our facilities</p>
+              <Eyebrow className="text-accent">01 — Our facilities</Eyebrow>
               <h2 className="display-md mt-6">Two manufacturing units.</h2>
             </Reveal>
 
@@ -103,7 +104,7 @@ export default function ContactPage() {
               ))}
             </div>
 
-            <Reveal delay={420} className="mt-10 border border-line bg-paper-dim p-7">
+            <Reveal delay={420} className="mt-10 rounded-[10px] border border-line bg-paper-dim p-7">
               <p className="label text-muted">Compliance</p>
               <dl className="mt-5 space-y-3">
                 <div className="flex items-baseline justify-between gap-6">
@@ -138,7 +139,7 @@ export default function ContactPage() {
           <div className="mt-14 grid gap-8 md:mt-20 md:grid-cols-2">
             {units.map((unit, i) => (
               <Reveal key={unit.tag} delay={i * 120}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden border border-line bg-paper">
+                <div className="frame relative aspect-[4/3] w-full border border-line bg-paper">
                   <iframe
                     src={unit.embed}
                     title={`Map of ${unit.name}`}
@@ -173,7 +174,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 items-end gap-x-8 gap-y-10 md:grid-cols-12">
             <div className="md:col-span-7">
               <Reveal>
-                <p className="label text-accent-soft">Prefer to talk?</p>
+                <Eyebrow className="text-accent-soft">Prefer to talk?</Eyebrow>
                 <h2 className="display-lg mt-7">
                   We answer
                   <br />

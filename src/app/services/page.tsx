@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { Eyebrow } from "@/components/eyebrow";
 import { ServiceNav } from "@/components/service-nav";
 import { Reveal } from "@/components/reveal";
 import {
@@ -57,7 +58,7 @@ export default function ServicesPage() {
         <div className="mt-14 grid grid-cols-1 items-center gap-x-8 gap-y-12 md:mt-20 md:grid-cols-12">
           <Reveal
             variant="clip"
-            className="relative block aspect-[4/3] w-full overflow-hidden md:col-span-6"
+            className="frame relative block aspect-[4/3] w-full md:col-span-6"
           >
             <Image
               src="/images/powder-coating.jpg"
@@ -97,11 +98,11 @@ export default function ServicesPage() {
 
         {/* 10-step process */}
         <Reveal className="mt-20 md:mt-28">
-          <p className="label text-accent">The standard</p>
+          <Eyebrow className="text-accent">The standard</Eyebrow>
           <h3 className="display-md mt-5">10-step coating process</h3>
         </Reveal>
 
-        <ol className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-12 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
           {process.map((item, i) => (
             <Reveal
               key={item.step}
@@ -120,7 +121,7 @@ export default function ServicesPage() {
 
         {/* Unit comparison */}
         <Reveal className="mt-20 md:mt-28">
-          <p className="label text-accent">Unit comparison</p>
+          <Eyebrow className="text-accent">Unit comparison</Eyebrow>
           <h3 className="display-md mt-5">Scaling for all requirements</h3>
         </Reveal>
 
@@ -159,7 +160,7 @@ export default function ServicesPage() {
         <div className="mt-20 grid grid-cols-1 gap-x-8 gap-y-12 md:mt-28 md:grid-cols-12">
           <div className="md:col-span-6">
             <Reveal>
-              <p className="label text-accent">Versatility</p>
+              <Eyebrow className="text-accent">Versatility</Eyebrow>
               <h3 className="display-md mt-5">Components we handle</h3>
               <div className="mt-9 flex flex-wrap gap-2">
                 {components.map((item) => (
@@ -176,7 +177,7 @@ export default function ServicesPage() {
 
           <div className="md:col-span-5 md:col-start-8">
             <Reveal delay={120}>
-              <p className="label text-accent">Colour &amp; finish</p>
+              <Eyebrow className="text-accent">Colour &amp; finish</Eyebrow>
               <h3 className="display-md mt-5">Any shade, any texture</h3>
               <div className="mt-9 flex flex-wrap gap-2">
                 {finishes.map((item) => (
@@ -205,7 +206,7 @@ export default function ServicesPage() {
             intro="Manufacturing and supplying stabilizers since 1986, engineered for wide input ranges and stable output."
           />
 
-          <Reveal delay={120} className="mt-14 grid gap-px border border-line bg-line md:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal delay={120} className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-20 sm:grid-cols-2 lg:grid-cols-4">
             {stabilizerSpecs.map((spec) => (
               <div key={spec.label} className="bg-paper-dim px-7 py-9">
                 <p className="label text-muted">{spec.label}</p>
@@ -219,7 +220,7 @@ export default function ServicesPage() {
           <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-12">
             <Reveal
               variant="clip"
-              className="relative block aspect-[4/3] w-full overflow-hidden md:col-span-5"
+              className="frame relative block aspect-[4/3] w-full md:col-span-5"
             >
               <Image
                 src="/images/voltage-stabilizers.jpg"
@@ -293,7 +294,7 @@ export default function ServicesPage() {
           <Reveal
             variant="clip"
             delay={120}
-            className="relative mt-14 block aspect-[16/9] w-full overflow-hidden md:mt-20 md:aspect-[24/9]"
+            className="frame relative mt-14 block aspect-[16/9] w-full md:mt-20 md:aspect-[24/9]"
           >
             <Image
               src="/images/battery-chargers.jpg"

@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { Eyebrow } from "@/components/eyebrow";
+import { BigLink } from "@/components/big-link";
 import { Reveal } from "@/components/reveal";
 import { Counter } from "@/components/counter";
 import { company, projects, sectors, gallery, stats } from "@/lib/content";
@@ -48,7 +50,7 @@ export default function ProjectsPage() {
                   <Reveal
                     variant="clip"
                     delay={80}
-                    className="relative block aspect-[4/3] w-full overflow-hidden"
+                    className="frame relative block aspect-[4/3] w-full"
                   >
                     <Image
                       src={project.image}
@@ -94,6 +96,10 @@ export default function ProjectsPage() {
               </article>
             </Reveal>
           ))}
+
+          <Reveal delay={120} className="mt-14">
+            <BigLink href="/services">See how we make them</BigLink>
+          </Reveal>
         </div>
       </section>
 
@@ -111,18 +117,27 @@ export default function ProjectsPage() {
               <Reveal
                 key={item.src}
                 delay={i * 90}
-                className={`flex flex-col ${item.span} md:h-[26rem]`}
+                className={`group ${item.span} md:h-[26rem]`}
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden md:aspect-auto md:flex-1">
+                <div className="frame relative aspect-[16/10] w-full md:aspect-auto md:h-full">
                   <Image
                     src={item.src}
                     alt={item.caption}
                     fill
                     sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105"
+                    className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6">
+                    <p className="label max-w-[28ch] text-paper">{item.caption}</p>
+                    <span
+                      aria-hidden="true"
+                      className="text-lg text-paper/80 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1"
+                    >
+                      ↗
+                    </span>
+                  </div>
                 </div>
-                <p className="label mt-4 text-muted">{item.caption}</p>
               </Reveal>
             ))}
           </div>
@@ -134,7 +149,7 @@ export default function ProjectsPage() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Reveal>
-              <p className="label text-accent">03 — Who we work with</p>
+              <Eyebrow className="text-accent">03 — Who we work with</Eyebrow>
               <h2 className="display-lg mt-6">
                 Industries
                 <br />
@@ -190,7 +205,7 @@ export default function ProjectsPage() {
         <div className="shell relative section-y">
           <div className="max-w-2xl">
             <Reveal>
-              <p className="label text-accent-soft">Get a quote</p>
+              <Eyebrow className="text-accent-soft">Get a quote</Eyebrow>
               <h2 className="display-lg mt-7">
                 Interested in a high-quality finish for your project?
               </h2>
