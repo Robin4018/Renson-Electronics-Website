@@ -19,123 +19,159 @@ export default function HomePage() {
   return (
     <>
       {/* ══════════════ HERO ══════════════ */}
-      <section className="relative pt-32 md:pt-40 lg:pt-48">
-        <div className="shell">
-          <Reveal className="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-2 pb-7">
-            <p className="label text-muted">
-              Est. {company.since} — {company.location}
-            </p>
-            <p className="label hidden text-muted sm:block">
-              MSME Registered <span className="mx-2.5 text-accent">/</span> Two Manufacturing
-              Units
-            </p>
+      <section
+        data-dark-hero
+        className="relative flex h-[100svh] min-h-[600px] w-full flex-col justify-end overflow-hidden"
+      >
+        <Image
+          src="/images/hero-coating.jpg"
+          alt="Technician applying powder coating to a large metal frame inside a spray booth"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/20 to-ink/90" />
+        {/* keeps the headline legible whatever the photograph is doing behind it */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/10 to-transparent" />
+
+        <div className="shell relative pb-10 md:pb-14">
+          <Reveal variant="lines">
+            <h1 className="display-xl text-paper">
+              <MaskLine>Built</MaskLine>
+              <MaskLine delay={110}>to last</MaskLine>
+            </h1>
           </Reveal>
 
-          <div className="hairline pt-10 md:pt-14">
-            <Reveal variant="lines">
-              <h1 className="display-xl">
-                <MaskLine>Built</MaskLine>
-                <MaskLine delay={110}>
-                  <span className="flex items-center gap-[0.16em]">
-                    <span>to&nbsp;last</span>
-                    <span className="relative inline-block h-[0.56em] w-[1.2em] shrink-0 overflow-hidden rounded-full align-middle">
-                      <Image
-                        src="/images/finishes.jpg"
-                        alt=""
-                        fill
-                        priority
-                        sizes="240px"
-                        className="object-cover"
-                      />
-                    </span>
-                  </span>
-                </MaskLine>
-              </h1>
+          <Reveal
+            delay={320}
+            className="mt-10 flex flex-wrap items-center justify-between gap-x-10 gap-y-6 border-t border-paper/25 pt-6"
+          >
+            <p className="label text-paper/75">
+              Est. {company.since} — {company.location}
+              <span className="mx-3 text-paper/40">/</span>
+              MSME Registered
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/contact"
+                className="btn label group border border-paper bg-paper text-ink hover:bg-transparent hover:text-paper"
+              >
+                Start a project
+                <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+              <Link
+                href="/services"
+                className="btn label border border-paper/40 text-paper hover:border-paper"
+              >
+                Our capabilities
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ══════════════ STATEMENT ══════════════ */}
+      <section className="shell section-y">
+        <Reveal variant="lines" className="text-center">
+          <h2 className="display-lg mx-auto max-w-[20ch]">
+            <MaskLine>Surface finishing,</MaskLine>
+            <MaskLine delay={100}>
+              <span className="text-muted">redefined.</span>
+            </MaskLine>
+          </h2>
+        </Reveal>
+
+        <div className="mx-auto mt-12 grid max-w-3xl gap-x-12 gap-y-6 md:mt-16 md:grid-cols-2">
+          <Reveal delay={120}>
+            <p className="text-sm leading-relaxed text-muted">
+              Electrostatic powder coating across two dedicated units — a
+              seven-stage pre-treatment, ITW Gema application and a controlled
+              205&ndash;215&deg;C cure behind every finish.
+            </p>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="text-sm leading-relaxed text-muted">
+              Voltage stabilizers from 0.2 to 10 KVA and industrial battery
+              chargers, manufactured and tested in-house, backed by our own
+              after-sales engineers.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Full-bleed interlude */}
+      <Reveal
+        variant="clip"
+        className="relative block h-[52vh] min-h-[300px] w-full md:h-[68vh]"
+      >
+        <Image
+          src="/images/facility.jpg"
+          alt="Production hall with press machinery and overhead gantry"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+      </Reveal>
+
+      {/* ══════════════ 01 — WHO WE ARE ══════════════ */}
+      <section className="shell section-y">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-12">
+          <div className="md:col-span-4 lg:col-span-3">
+            <Reveal>
+              <Eyebrow className="text-accent">01 — Who we are</Eyebrow>
+              <dl className="mt-8">
+                {[
+                  ["Founded", "1986, Coimbatore"],
+                  ["Established", "December 1989"],
+                  ["Divisions", "Coating & Electronics"],
+                  ["Units", "Two, 15,000 sq ft"],
+                  ["Land", "80,000 sq ft owned"],
+                ].map(([key, value]) => (
+                  <div
+                    key={key}
+                    className="flex items-baseline justify-between gap-6 border-b border-line py-3.5 first:border-t"
+                  >
+                    <dt className="label text-muted">{key}</dt>
+                    <dd className="text-right text-sm font-medium tracking-tight">
+                      {value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-1 gap-x-8 gap-y-12 pt-12 pb-16 md:grid-cols-12 md:pt-16 md:pb-20">
-            <div className="md:col-span-5">
-              <Reveal delay={340}>
-                <p className="label mb-6 text-muted">Divisions</p>
-                <ul>
-                  {capabilities.map((item) => (
-                    <li key={item.title}>
-                      <Link
-                        href={item.href}
-                        className="group flex items-center justify-between gap-6 border-b border-line py-4 first:border-t"
-                      >
-                        <span className="text-lg tracking-tight transition-colors duration-300 group-hover:text-accent">
-                          {item.title}
-                        </span>
-                        <span className="label text-muted transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
-                          {item.index}&nbsp;→
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            </div>
+          <div className="md:col-span-8 lg:col-span-7 lg:col-start-6">
+            <Reveal>
+              <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
+                Renson Electronics is a registered MSME, promoted in 1986 and
+                formally established in December 1989 in Coimbatore. For over
+                three decades we have manufactured voltage stabilizers and
+                battery chargers for industrial clients across Tamil Nadu.
+              </p>
+            </Reveal>
+            <Reveal delay={140}>
+              <p className="mt-7 text-base leading-relaxed text-muted">
+                In 2001 we diversified into surface finishing with our Powder
+                Coating Division — investing in advanced machinery, dedicated
+                facilities and specialised personnel to deliver world-class
+                coating solutions under one roof.
+              </p>
+            </Reveal>
 
-            <div className="md:col-span-6 md:col-start-7 lg:col-span-5">
-              <Reveal delay={260}>
-                <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-                  Electrostatic powder coating, voltage stabilizers and battery
-                  chargers — engineered with precision, delivered with
-                  reliability, and trusted by industry across South India since
-                  1986.
-                </p>
-
-                <div className="mt-10 flex flex-wrap items-center gap-3">
-                  <Link
-                    href="/contact"
-                    className="btn label group border border-ink bg-ink text-paper hover:bg-transparent hover:text-ink"
-                  >
-                    Start a project
-                    <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
-                      →
-                    </span>
-                  </Link>
-                  <Link
-                    href="/services"
-                    className="btn label border border-line text-ink hover:border-ink"
-                  >
-                    Our capabilities
-                  </Link>
-                </div>
-              </Reveal>
-            </div>
+            <Reveal delay={220} className="mt-12">
+              <BigLink href="/about">Read more about us</BigLink>
+            </Reveal>
           </div>
         </div>
-
-        {/* Full-bleed cinematic band */}
-        <Reveal
-          variant="clip"
-          delay={180}
-          className="relative block h-[42vh] min-h-[280px] w-full md:h-[58vh]"
-        >
-          <Image
-            src="/images/hero-coating.jpg"
-            alt="Technician applying powder coating to a large metal frame inside a spray booth"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 via-40% to-transparent" />
-          <div className="shell absolute inset-x-0 bottom-0 pb-7">
-            <p className="label text-paper/85">
-              Electrostatic powder application
-              <span className="mx-2.5 text-accent-soft">—</span>
-              the stage every finish depends on
-            </p>
-          </div>
-        </Reveal>
       </section>
 
       {/* ══════════════ STATS ══════════════ */}
-      <section className="border-b border-line bg-paper-dim">
+      <section className="border-y border-line bg-paper-dim">
         <div className="shell">
           <dl className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {stats.map((stat, i) => (
@@ -158,81 +194,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════ 01 — POSITIONING ══════════════ */}
-      <section className="shell section-y">
-        <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-12">
-          <div className="md:col-span-4 lg:col-span-3">
-            <div className="md:sticky md:top-32">
-              <Reveal>
-                <Eyebrow className="text-accent">01 — What we do</Eyebrow>
-              </Reveal>
-              <div className="mt-8 hidden md:block">
-                <Reveal
-                  variant="clip"
-                  delay={200}
-                  className="frame relative block aspect-[2/3] w-full max-w-[240px]"
-                >
-                  <Image
-                    src="/images/spray-gun.jpg"
-                    alt="Operator applying coating with an electrostatic spray gun"
-                    fill
-                    sizes="(min-width: 768px) 240px, 60vw"
-                    className="object-cover"
-                  />
-                </Reveal>
-                <p className="label mt-4 text-muted">ITW Gema electrostatic gun</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:col-span-8 lg:col-span-8 lg:col-start-5">
-            <Reveal variant="lines">
-              <h2 className="display-lg">
-                <MaskLine>Surface finishing,</MaskLine>
-                <MaskLine delay={100}>
-                  <span className="text-muted">redefined.</span>
-                </MaskLine>
-              </h2>
-            </Reveal>
-
-            <div className="mt-12 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-              <Reveal delay={120}>
-                <p className="text-base leading-relaxed text-ink/75">
-                  Renson Electronics is a registered MSME, originally promoted in
-                  1986 and formally established in December 1989 in Coimbatore,
-                  Tamil Nadu. For over three decades we have manufactured and
-                  supplied voltage stabilizers and battery chargers to industrial
-                  clients across the region.
-                </p>
-              </Reveal>
-              <Reveal delay={200}>
-                <p className="text-base leading-relaxed text-ink/75">
-                  In 2001 we diversified into surface finishing with our Powder
-                  Coating Division — investing in advanced machinery, dedicated
-                  facilities and specialised personnel to deliver world-class
-                  coating solutions under one roof.
-                </p>
-              </Reveal>
-            </div>
-
-            <Reveal
-              delay={260}
-              className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line sm:grid-cols-3"
-            >
-              {[
-                ["80,000 sq ft", "Company-owned land"],
-                ["15,000 sq ft", "Covered production"],
-                ["2001", "Coating division"],
-              ].map(([value, caption]) => (
-                <div key={caption} className="bg-paper px-6 py-8">
-                  <p className="font-display text-2xl tracking-tight">{value}</p>
-                  <p className="label mt-3.5 text-muted">{caption}</p>
-                </div>
-              ))}
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       {/* ══════════════ 02 — CAPABILITIES ══════════════ */}
       <section className="border-t border-line bg-paper-dim section-y">

@@ -9,14 +9,26 @@ import { Logo } from "./logo";
 export function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [overDark, setOverDark] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // A page may open with a full-bleed dark hero (marked data-dark-hero). While
+  // the header sits over it, it stays transparent and inverts to light type.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const hero = document.querySelector<HTMLElement>("[data-dark-hero]");
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 16);
+      setOverDark(!!hero && y < hero.offsetHeight - 96);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -29,7 +41,7 @@ export function SiteHeader() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
-          scrolled && !open
+          scrolled && !overDark && !open
             ? "border-b border-line bg-paper/85 backdrop-blur-xl"
             : "border-b border-transparent bg-transparent"
         }`}
@@ -37,7 +49,7 @@ export function SiteHeader() {
         <div className="shell flex h-20 items-center justify-between gap-6 md:h-24">
           <Link href="/" aria-label={`${company.name} — home`} className="shrink-0">
             <Logo
-              tone={open ? "light" : "dark"}
+              tone={open || overDark ? "light" : "dark"}
               height={30}
               priority
               className="transition-opacity duration-300 hover:opacity-70"
@@ -53,15 +65,21 @@ export function SiteHeader() {
                   <span
                     aria-current={active ? "page" : undefined}
                     className={`label transition-colors duration-300 ${
-                      active ? "text-ink" : "text-muted group-hover:text-ink"
+                      overDark
+                        ? active
+                          ? "text-paper"
+                          : "text-paper/65 group-hover:text-paper"
+                        : active
+                          ? "text-ink"
+                          : "text-muted group-hover:text-ink"
                     }`}
                   >
                     {item.label}
                   </span>
                   <span
-                    className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                      active ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
+                    className={`absolute bottom-0 left-0 h-px transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      overDark ? "bg-paper" : "bg-accent"
+                    } ${active ? "w-full" : "w-0 group-hover:w-full"}`}
                   />
                 </Link>
               );
@@ -71,7 +89,11 @@ export function SiteHeader() {
           <div className="flex shrink-0 items-center gap-2">
             <Link
               href="/contact"
-              className="btn label hidden border border-ink py-3.5 text-ink hover:bg-ink hover:text-paper sm:inline-flex"
+              className={`btn label hidden py-3.5 sm:inline-flex ${
+                overDark
+                  ? "border border-paper text-paper hover:bg-paper hover:text-ink"
+                  : "border border-ink text-ink hover:bg-ink hover:text-paper"
+              }`}
             >
               Enquire
               <span aria-hidden="true">→</span>
@@ -87,12 +109,16 @@ export function SiteHeader() {
               <span className="relative block h-3 w-6">
                 <span
                   className={`absolute left-0 block h-px w-6 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    open ? "top-1.5 rotate-45 bg-paper" : "top-0 bg-ink"
+                    open
+                      ? "top-1.5 rotate-45 bg-paper"
+                      : `top-0 ${overDark ? "bg-paper" : "bg-ink"}`
                   }`}
                 />
                 <span
                   className={`absolute left-0 block h-px w-6 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    open ? "top-1.5 -rotate-45 bg-paper" : "top-3 bg-ink"
+                    open
+                      ? "top-1.5 -rotate-45 bg-paper"
+                      : `top-3 ${overDark ? "bg-paper" : "bg-ink"}`
                   }`}
                 />
               </span>

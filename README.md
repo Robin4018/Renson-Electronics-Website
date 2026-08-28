@@ -49,13 +49,19 @@ and `.chip` (one pill geometry so controls always line up), `.frame` (10px
 rounded corners for every photograph and panel) and `.link-xl` (the oversized
 underlined arrow link used to close a section).
 
+The home page follows the Kononenko rhythm: a full-viewport photograph with the
+headline overlaid, then a centred statement with two supporting columns, a
+full-bleed interlude, and a key/value column beside a paragraph. The header
+detects a `data-dark-hero` section beneath it and inverts to light type while it
+sits over one.
+
 ## Structure
 
 ```
 src/
   app/
     layout.tsx        header + footer shell, fonts, metadata
-    page.tsx          home     — hero, stats, 01–06, CTA
+    page.tsx          home     — full-bleed hero, statement, 01–06, CTA
     about/            about    — story, timeline, leadership, facilities, principles
     services/         services — powder coating, stabilizers, chargers (anchored)
     projects/         projects — selected work, gallery, sectors
