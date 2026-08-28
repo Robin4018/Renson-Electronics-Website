@@ -220,7 +220,7 @@ export default function HomePage() {
               {[
                 ["80,000 sq ft", "Company-owned land"],
                 ["15,000 sq ft", "Covered production"],
-                ["2001", "Coating division launched"],
+                ["2001", "Coating division"],
               ].map(([value, caption]) => (
                 <div key={caption} className="bg-paper px-6 py-8">
                   <p className="font-display text-2xl tracking-tight">{value}</p>

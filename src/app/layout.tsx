@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Archivo } from "next/font/google";
+import { Archivo, Bodoni_Moda } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 const archivo = Archivo({
   variable: "--font-archivo",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Didone micro-type — the same family as the wordmark in the official logo.
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
   subsets: ["latin"],
   display: "swap",
 });
@@ -37,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${archivo.variable} h-full antialiased`}
+      className={`${archivo.variable} ${bodoni.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper">
         <SiteHeader />

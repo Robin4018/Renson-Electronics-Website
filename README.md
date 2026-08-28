@@ -26,9 +26,12 @@ confidence (stat strips, spec tables).
 | `--color-accent` | `#0b6289` | Eyebrows and links on paper (AA) |
 | `--color-accent-soft` | `#4aa8d4` | Eyebrows and links on ink (AA) |
 
-**Type: Archivo only.** Display, body and micro-labels are all one grotesk —
-labels are the same face set small, uppercase and tracked out at `0.14em` via the
-`.label` class. No monospace anywhere.
+**Type: Archivo + Bodoni Moda.** Archivo (grotesk) carries display and body.
+Micro-labels — eyebrows, nav, buttons, chips, table keys — are Bodoni Moda set
+small, uppercase and tracked out at `0.15em` via the `.label` class. That is the
+same Didone family as the wordmark in the official logo, so the labels read as
+part of the lockup; the variable optical-size axis keeps the hairlines sturdy at
+12px. No monospace anywhere.
 
 Shared primitives in `globals.css` keep spacing consistent: `.shell` (one
 horizontal gutter for every section), `.section-y` (one vertical rhythm), `.btn`
