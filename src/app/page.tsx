@@ -26,7 +26,7 @@ export default function HomePage() {
               Est. {company.since} — {company.location}
             </p>
             <p className="label hidden text-muted sm:block">
-              MSME Registered <span className="mx-2.5 text-brand">/</span> Two Manufacturing
+              MSME Registered <span className="mx-2.5 text-accent">/</span> Two Manufacturing
               Units
             </p>
           </Reveal>
@@ -90,7 +90,7 @@ export default function HomePage() {
                 <div className="mt-10 flex flex-wrap items-center gap-3">
                   <Link
                     href="/contact"
-                    className="btn label group bg-ink text-paper hover:bg-brand"
+                    className="btn label group bg-ink text-paper hover:bg-accent"
                   >
                     Start a project
                     <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
@@ -532,7 +532,7 @@ export default function HomePage() {
                     href={`https://wa.me/${company.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn label group bg-paper text-ink hover:bg-brand hover:text-paper"
+                    className="btn label group bg-paper text-ink hover:bg-accent hover:text-paper"
                   >
                     WhatsApp us
                     <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">

@@ -1,25 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Surfaces ─────────────────────────────────────────── */
+  /* ── Surfaces ─────────────────────────────────────────────
+     Warm-neutral throughout. The previous ink and greys were
+     blue-black, which read cold against the bone paper. */
   --color-paper: #f2f0eb;
   --color-paper-dim: #e9e6df;
   --color-paper-deep: #ddd9d0;
-  --color-ink: #131519;
-  --color-ink-soft: #1b1e24;
-  --color-ink-line: #2b2f37;
+  --color-ink: #181614;
+  --color-ink-soft: #201d1a;
+  --color-ink-line: #2e2a26;
 
   /* ── Text ─────────────────────────────────────────────── */
-  --color-muted: #6c7076;
-  --color-muted-dim: #9aa0a7;
+  --color-muted: #6e675f; /* 5.0:1 on paper */
+  --color-muted-dim: #9c948a; /* 6.1:1 on ink */
 
   /* ── Rules ────────────────────────────────────────────── */
   --color-line: #d4d0c6;
 
-  /* ── Brand (sampled from the official logo badge) ─────── */
-  --color-brand: #0f78a8;
-  --color-accent: #0b6289; /* AA on paper */
-  --color-accent-soft: #4aa8d4; /* AA on ink */
+  /* ── Accent ───────────────────────────────────────────────
+     A warm rust, never blue. The logo badge carries the only blue
+     on the page; type and rules stay ink or accent. */
+  --color-accent: #a8451f; /* 5.3:1 on paper */
+  --color-accent-soft: #e08a3c; /* 6.9:1 on ink */
 
   --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -60,7 +63,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-brand);
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 }

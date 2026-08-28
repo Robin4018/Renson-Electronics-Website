@@ -17,14 +17,18 @@ numbered sections. Drawn from the two reference sites: Kononenko Group's
 whitespace, numbered sections and large-format imagery; SharpLink's data-forward
 confidence (stat strips, spec tables).
 
-| Token | Value | Use |
-| --- | --- | --- |
-| `--color-paper` | `#f2f0eb` | Page ground |
-| `--color-paper-dim` | `#e9e6df` | Alternating sections |
-| `--color-ink` | `#131519` | Text, dark sections |
-| `--color-brand` | `#0f78a8` | Logo blue — marks, fills, nav underline |
-| `--color-accent` | `#0b6289` | Eyebrows and links on paper (AA) |
-| `--color-accent-soft` | `#4aa8d4` | Eyebrows and links on ink (AA) |
+**No blue in the type.** Every surface, grey and accent is warm-neutral; the
+only blue on the page is the horse badge inside the logo itself.
+
+| Token | Value | Use | Contrast |
+| --- | --- | --- | --- |
+| `--color-paper` | `#f2f0eb` | Page ground | — |
+| `--color-paper-dim` | `#e9e6df` | Alternating sections | — |
+| `--color-ink` | `#181614` | Type, dark sections | 15.9:1 on paper |
+| `--color-muted` | `#6e675f` | Secondary type on paper | 4.9:1 |
+| `--color-muted-dim` | `#9c948a` | Secondary type on ink | 6.0:1 |
+| `--color-accent` | `#a8451f` | Eyebrows, rules, hover on paper | 5.2:1 |
+| `--color-accent-soft` | `#e08a3c` | Eyebrows and links on ink | 6.8:1 |
 
 **Type: Archivo + Inter.** Archivo carries display headings only. Inter carries
 body copy and all micro-type — eyebrows, nav, buttons, chips, table keys — set

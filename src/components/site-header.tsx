@@ -59,7 +59,7 @@ export function SiteHeader() {
                     {item.label}
                   </span>
                   <span
-                    className={`absolute bottom-0 left-0 h-px bg-brand transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                       active ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />

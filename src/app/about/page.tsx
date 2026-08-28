@@ -288,7 +288,7 @@ export default function AboutPage() {
         </div>
 
         <Reveal delay={200} className="mt-16 flex flex-wrap items-center gap-3">
-          <Link href="/services" className="btn label group bg-ink text-paper hover:bg-brand">
+          <Link href="/services" className="btn label group bg-ink text-paper hover:bg-accent">
             Explore our services
             <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
               →
