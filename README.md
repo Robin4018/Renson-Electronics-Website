@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Renson Electronics — Website
 
-## Getting Started
-
-First, run the development server:
+Next.js 16 (App Router) + Tailwind CSS v4 + TypeScript.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # http://localhost:3000
+npm run build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Design direction
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+An editorial, print-inspired take on an industrial manufacturer — bone paper,
+ink black, and the brand blue lifted straight out of the logo. Oversized grotesk
+display type, wide-tracked uppercase micro-labels, generous whitespace and
+numbered sections. Drawn from the two reference sites: Kononenko Group's
+whitespace, numbered sections and large-format imagery; SharpLink's data-forward
+confidence (stat strips, spec tables).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Token | Value | Use |
+| --- | --- | --- |
+| `--color-paper` | `#f2f0eb` | Page ground |
+| `--color-paper-dim` | `#e9e6df` | Alternating sections |
+| `--color-ink` | `#131519` | Text, dark sections |
+| `--color-brand` | `#0f78a8` | Logo blue — marks, fills, nav underline |
+| `--color-accent` | `#0b6289` | Eyebrows and links on paper (AA) |
+| `--color-accent-soft` | `#4aa8d4` | Eyebrows and links on ink (AA) |
 
-## Learn More
+**Type: Archivo only.** Display, body and micro-labels are all one grotesk —
+labels are the same face set small, uppercase and tracked out at `0.14em` via the
+`.label` class. No monospace anywhere.
 
-To learn more about Next.js, take a look at the following resources:
+Shared primitives in `globals.css` keep spacing consistent: `.shell` (one
+horizontal gutter for every section), `.section-y` (one vertical rhythm), `.btn`
+and `.chip` (one pill geometry so controls always line up).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+  app/
+    layout.tsx        header + footer shell, fonts, metadata
+    page.tsx          home page (hero, stats, 01–06, CTA)
+    about|services|projects|contact/   stubs — next to build
+    globals.css       design tokens, primitives, reveal/marquee animation
+  components/
+    site-header.tsx     scroll-aware nav + fullscreen mobile menu
+    site-footer.tsx     marquee, sitemap, facilities, compliance
+    section-heading.tsx one heading pattern for every section
+    logo.tsx            official lockup, dark + light variants
+    reveal.tsx          IntersectionObserver reveals (fade / clip / masked lines)
+    counter.tsx         count-up stat figures
+    page-stub.tsx       placeholder for pages not yet built
+  lib/content.ts      all copy and specs in one place
+```
 
-## Deploy on Vercel
+All motion respects `prefers-reduced-motion`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Logo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`public/logo-white.png` and `public/logo-dark.png` are generated from the
+official master (`Renson Electronics Logo - White.avif`) by
+`node scripts/build-logo.mjs`, which keeps the blue horse badge intact and
+recolours only the wordmark for light backgrounds. Use the `<Logo />` component
+rather than referencing the files directly.
+
+## Photography
+
+`public/images/*` is sourced from [Pexels](https://www.pexels.com/license/) —
+free for commercial use, no attribution required, modification permitted. The
+manifest lives in [public/images/CREDITS.md](public/images/CREDITS.md) and the
+whole set can be re-fetched and re-cropped with:
+
+```bash
+node scripts/fetch-photos.mjs
+```
+
+Swap in real Renson photography by replacing files of the same name and aspect
+ratio — no code changes needed.
+
+## Screenshots
+
+`scripts/shoot.mjs` renders full-page screenshots for visual review (it scrolls
+first so every reveal animation has fired):
+
+```bash
+node scripts/shoot.mjs http://localhost:3000/ 1440 900 scratch/home
+```
