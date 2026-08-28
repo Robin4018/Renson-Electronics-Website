@@ -26,6 +26,9 @@ const PHOTOS = [
   ["machined-parts", 11157438, 1400, 1050, "centre", "Precision machined metal components"],
   ["coil-rings", 8113565, 1400, 1050, "centre", "Stacked stainless steel coiled rings"],
   ["plant-exterior", 6537735, 2400, 1000, "centre", "Industrial plant exterior"],
+  ["band-factory", 29988964, 2400, 1000, "centre", "Sunlit factory floor with cutting machinery"],
+  ["band-parts", 8113565, 2400, 1000, "centre", "Stacked stainless steel coiled components"],
+  ["band-panels", 28265032, 2400, 1000, "centre", "Industrial electrical wiring and control panels"],
 ];
 
 const credits = [];

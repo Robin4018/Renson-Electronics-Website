@@ -124,9 +124,9 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 via-40% to-transparent" />
           <div className="shell absolute inset-x-0 bottom-0 pb-7">
             <p className="label text-paper/85">
-              Electrostatic application
+              Electrostatic powder application
               <span className="mx-2.5 text-accent-soft">—</span>
-              Unit II spray booth, Vellanapatti
+              the stage every finish depends on
             </p>
           </div>
         </Reveal>

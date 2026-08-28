@@ -19,3 +19,6 @@ Regenerate with `node scripts/fetch-photos.mjs`.
 | machined-parts.jpg | Precision machined metal components | https://www.pexels.com/photo/11157438/ |
 | coil-rings.jpg | Stacked stainless steel coiled rings | https://www.pexels.com/photo/8113565/ |
 | plant-exterior.jpg | Industrial plant exterior | https://www.pexels.com/photo/6537735/ |
+| band-factory.jpg | Sunlit factory floor with cutting machinery | https://www.pexels.com/photo/29988964/ |
+| band-parts.jpg | Stacked stainless steel coiled components | https://www.pexels.com/photo/8113565/ |
+| band-panels.jpg | Industrial electrical wiring and control panels | https://www.pexels.com/photo/28265032/ |

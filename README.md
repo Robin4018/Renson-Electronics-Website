@@ -40,17 +40,22 @@ and `.chip` (one pill geometry so controls always line up).
 src/
   app/
     layout.tsx        header + footer shell, fonts, metadata
-    page.tsx          home page (hero, stats, 01–06, CTA)
-    about|services|projects|contact/   stubs — next to build
+    page.tsx          home     — hero, stats, 01–06, CTA
+    about/            about    — story, timeline, leadership, facilities, principles
+    services/         services — powder coating, stabilizers, chargers (anchored)
+    projects/         projects — selected work, gallery, sectors
+    contact/          contact  — enquiry form, facilities, maps
     globals.css       design tokens, primitives, reveal/marquee animation
   components/
     site-header.tsx     scroll-aware nav + fullscreen mobile menu
     site-footer.tsx     marquee, sitemap, facilities, compliance
+    page-hero.tsx       shared inner-page opener
     section-heading.tsx one heading pattern for every section
+    service-nav.tsx     sticky in-page nav for the services sections
+    enquiry-form.tsx    validated contact form
     logo.tsx            official lockup, dark + light variants
     reveal.tsx          IntersectionObserver reveals (fade / clip / masked lines)
     counter.tsx         count-up stat figures
-    page-stub.tsx       placeholder for pages not yet built
   lib/content.ts      all copy and specs in one place
 ```
 
@@ -77,6 +82,25 @@ node scripts/fetch-photos.mjs
 
 Swap in real Renson photography by replacing files of the same name and aspect
 ratio — no code changes needed.
+
+## Content notes — read before launch
+
+**The enquiry form has no backend.** A valid submission composes the enquiry and
+hands it to the visitor's mail client, with WhatsApp as a fallback. To wire a
+real endpoint, replace the body of `handoff` in
+[enquiry-form.tsx](src/components/enquiry-form.tsx) with a `fetch` to your API
+route — validation and success states stay as they are.
+
+**The photography is illustrative stock.** Captions describe what each photograph
+shows and deliberately avoid claiming it is a Renson site. Replace the files with
+real Unit I / Unit II photography before launch and the captions can become
+specific again.
+
+**Unresolved figure in the source material.** The reference site states Unit II's
+maximum component length as both 12 ft and 15 ft, and describes the oven as both
+`12 ft × 12 ft` and `15 ft × 6 ft × 8 ft`. This build uses 15 ft consistently —
+confirm which is correct and update `units` and `differentiators` in
+[content.ts](src/lib/content.ts).
 
 ## Screenshots
 
