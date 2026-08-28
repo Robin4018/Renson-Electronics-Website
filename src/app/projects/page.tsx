@@ -212,7 +212,7 @@ export default function ProjectsPage() {
               <div className="mt-10 flex flex-wrap gap-3">
                 <Link
                   href="/contact"
-                  className="btn label group bg-paper text-ink hover:bg-accent hover:text-paper"
+                  className="btn label group border border-paper bg-paper text-ink hover:bg-transparent hover:text-paper"
                 >
                   Get a quote today
                   <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">

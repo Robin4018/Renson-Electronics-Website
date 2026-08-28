@@ -94,7 +94,7 @@ export function EnquiryForm() {
             href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(summary())}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn label group bg-ink text-paper hover:bg-accent"
+            className="btn label group border border-ink bg-ink text-paper hover:bg-transparent hover:text-ink"
           >
             Send on WhatsApp
             <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
@@ -198,7 +198,7 @@ export function EnquiryForm() {
 
       <button
         type="submit"
-        className="btn label group mt-10 w-full justify-center bg-ink text-paper hover:bg-accent"
+        className="btn label group mt-10 w-full justify-center border border-ink bg-ink text-paper hover:bg-transparent hover:text-ink"
       >
         Submit enquiry
         <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">

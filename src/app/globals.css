@@ -19,10 +19,12 @@
   --color-line: #d4d0c6;
 
   /* ── Accent ───────────────────────────────────────────────
-     A warm rust, never blue. The logo badge carries the only blue
-     on the page; type and rules stay ink or accent. */
-  --color-accent: #a8451f; /* 5.3:1 on paper */
-  --color-accent-soft: #e08a3c; /* 6.9:1 on ink */
+     Monochrome. Emphasis comes from weight, size and space rather
+     than hue; the horse badge in the logo is the only colour on
+     the page. --color-accent is the emphasis tone on paper,
+     --color-accent-soft its counterpart on ink. */
+  --color-accent: #181614;
+  --color-accent-soft: #f2f0eb;
 
   --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -63,7 +65,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid currentColor;
     outline-offset: 3px;
   }
 }

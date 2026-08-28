@@ -190,7 +190,7 @@ export default function ContactPage() {
                     href={`https://wa.me/${company.whatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn label group bg-paper text-ink hover:bg-accent hover:text-paper"
+                    className="btn label group border border-paper bg-paper text-ink hover:bg-transparent hover:text-paper"
                   >
                     WhatsApp us
                     <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">

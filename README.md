@@ -17,8 +17,9 @@ numbered sections. Drawn from the two reference sites: Kononenko Group's
 whitespace, numbered sections and large-format imagery; SharpLink's data-forward
 confidence (stat strips, spec tables).
 
-**No blue in the type.** Every surface, grey and accent is warm-neutral; the
-only blue on the page is the horse badge inside the logo itself.
+**Monochrome.** Emphasis comes from weight, size and space rather than hue.
+The horse badge inside the logo is the only colour on the page, which is what
+lets the photography carry all of it.
 
 | Token | Value | Use | Contrast |
 | --- | --- | --- | --- |
@@ -27,8 +28,11 @@ only blue on the page is the horse badge inside the logo itself.
 | `--color-ink` | `#181614` | Type, dark sections | 15.9:1 on paper |
 | `--color-muted` | `#6e675f` | Secondary type on paper | 4.9:1 |
 | `--color-muted-dim` | `#9c948a` | Secondary type on ink | 6.0:1 |
-| `--color-accent` | `#a8451f` | Eyebrows, rules, hover on paper | 5.2:1 |
-| `--color-accent-soft` | `#e08a3c` | Eyebrows and links on ink | 6.8:1 |
+| `--color-accent` | `#181614` | Emphasis on paper — eyebrows, rules, hover | 15.9:1 |
+| `--color-accent-soft` | `#f2f0eb` | Emphasis on ink | 15.9:1 |
+
+Buttons invert on hover (filled becomes outlined) rather than changing hue, and
+the focus ring is `currentColor` so it stays visible on either surface.
 
 **Type: Archivo + Inter.** Archivo carries display headings only. Inter carries
 body copy and all micro-type — eyebrows, nav, buttons, chips, table keys — set

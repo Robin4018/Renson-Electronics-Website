@@ -323,7 +323,7 @@ export default function ServicesPage() {
           <Reveal delay={200} className="mt-16 flex flex-wrap items-center gap-3">
             <Link
               href="/contact"
-              className="btn label group bg-paper text-ink hover:bg-accent hover:text-paper"
+              className="btn label group border border-paper bg-paper text-ink hover:bg-transparent hover:text-paper"
             >
               Request a quote
               <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
