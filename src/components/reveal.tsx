@@ -44,8 +44,24 @@ export function Reveal({
     return () => observer.disconnect();
   }, [once]);
 
-  const base =
-    variant === "clip" ? "reveal-clip" : variant === "lines" ? "" : "reveal";
+  if (variant === "clip") {
+    // The clip-path lives on an inner layer, not the observed node itself —
+    // IntersectionObserver treats a self-applied clip-path as zero visible
+    // area, so watching the clipped element directly never reports as shown.
+    return (
+      <Tag ref={ref} className={className}>
+        <div
+          data-shown={shown}
+          className="reveal-clip absolute inset-0"
+          style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
+        >
+          {children}
+        </div>
+      </Tag>
+    );
+  }
+
+  const base = variant === "lines" ? "" : "reveal";
 
   return (
     <Tag

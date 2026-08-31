@@ -16,17 +16,32 @@ export function SiteHeader() {
   // the header sits over it, it stays transparent and inverts to light type.
   useEffect(() => {
     const hero = document.querySelector<HTMLElement>("[data-dark-hero]");
-    const onScroll = () => {
+    let heroHeight = hero?.offsetHeight ?? 0;
+    let frame = 0;
+
+    const measure = () => {
+      frame = 0;
       const y = window.scrollY;
       setScrolled(y > 16);
-      setOverDark(!!hero && y < hero.offsetHeight - 96);
+      setOverDark(!!hero && y < heroHeight - 96);
     };
-    onScroll();
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+
+    const onResize = () => {
+      heroHeight = hero?.offsetHeight ?? 0;
+      onScroll();
+    };
+
+    measure();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
+      if (frame) cancelAnimationFrame(frame);
     };
   }, [pathname]);
 
@@ -89,7 +104,13 @@ export function SiteHeader() {
           <div className="flex shrink-0 items-center gap-2">
             <Link
               href="/contact"
-              className={`btn label hidden py-3.5 sm:inline-flex ${
+              aria-hidden={!scrolled}
+              tabIndex={scrolled ? undefined : -1}
+              className={`btn label hidden py-3.5 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:inline-flex ${
+                scrolled
+                  ? "translate-y-0 opacity-100"
+                  : "pointer-events-none -translate-y-1 opacity-0"
+              } ${
                 overDark
                   ? "border border-paper text-paper hover:bg-paper hover:text-ink"
                   : "border border-ink text-ink hover:bg-ink hover:text-paper"

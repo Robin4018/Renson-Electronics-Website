@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { Eyebrow } from "@/components/eyebrow";
 import { ServiceNav } from "@/components/service-nav";
-import { Reveal } from "@/components/reveal";
+import { Reveal, MaskLine } from "@/components/reveal";
 import {
   company,
   process,
@@ -33,17 +32,57 @@ const sections = [
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="B — Services"
-        meta="Two units · One roof"
-        lines={["Industrial services", "built to perform."]}
-        intro="From precision surface coating to reliable electrical manufacturing — all under one roof in Coimbatore, with the same standard applied to a single panel board or a 15 ft fabrication."
-        band={{
-          src: "/images/band-factory.jpg",
-          alt: "Factory floor with production machinery",
-          caption: "Precision manufacturing on the production floor",
-        }}
-      />
+      {/* ══════════════ HERO ══════════════ */}
+      <section
+        data-dark-hero
+        className="relative flex h-[100svh] min-h-[600px] w-full flex-col justify-end overflow-hidden"
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/band-factory.jpg"
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/services-hero.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/20 to-ink/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/10 to-transparent" />
+
+        <div className="shell relative pb-10 md:pb-14">
+          <Reveal>
+            <Eyebrow className="mb-6 text-accent-soft">B — Services</Eyebrow>
+          </Reveal>
+
+          <Reveal variant="lines">
+            <h1 className="display-xl text-paper">
+              <MaskLine>Industrial services</MaskLine>
+              <MaskLine delay={110}>
+                <span className="text-paper/60">built to perform.</span>
+              </MaskLine>
+            </h1>
+          </Reveal>
+
+          <Reveal
+            delay={200}
+            className="mt-10 flex flex-wrap items-center justify-between gap-x-10 gap-y-6 border-t border-paper/25 pt-6"
+          >
+            <p className="label text-paper/75">Two units · One roof</p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ══════════════ INTRO ══════════════ */}
+      <section className="shell border-b border-line py-10 md:py-14">
+        <Reveal>
+          <p className="max-w-2xl text-base leading-relaxed text-ink/75 md:text-lg">
+            From precision surface coating to reliable electrical
+            manufacturing — all under one roof in Coimbatore, with the same
+            standard applied to a single panel board or a 15 ft fabrication.
+          </p>
+        </Reveal>
+      </section>
 
       <ServiceNav items={sections} />
 

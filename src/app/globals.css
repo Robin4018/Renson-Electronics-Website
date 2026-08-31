@@ -37,7 +37,12 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* Not scroll-behavior: smooth — Next.js resets scroll position on every
+       client-side route change via plain window.scrollTo(), which inherits
+       this value. With it set to smooth, that reset became an animated
+       scroll sweeping through the entire new page, tripping every Reveal's
+       IntersectionObserver along the way and leaving nothing to animate
+       once the user actually scrolled. */
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -115,9 +120,18 @@
   }
 
   .display-xl {
-    font-size: clamp(3.25rem, 10.5vw, 10rem);
+    /* A 3.25rem floor forced that size on every viewport below ~495px
+       regardless of how narrow — fine with tight tracking, but with looser
+       letter-spacing it made two-word lines like "Industrial services"
+       wide enough to wrap on phones. Lowering the floor lets the vw term
+       govern all the way down instead of artificially flooring out. */
+    font-size: clamp(2rem, 10.5vw, 10rem);
     line-height: 0.88;
-    letter-spacing: -0.045em;
+    /* Kept well short of -0.045em: at this size that tracking was tight
+       enough to collide glyphs (e.g. "f"/"o"/"r" in "perform") in the
+       fallback font during the font-display: swap window, before Archivo
+       finishes loading. */
+    letter-spacing: -0.005em;
   }
 
   .display-lg {
@@ -221,6 +235,17 @@
   clip-path: inset(0 0 100% 0);
   transition: clip-path 1.2s var(--ease-out-expo);
   transition-delay: var(--reveal-delay, 0ms);
+  /* Promotes the image to its own GPU layer so the wipe only redraws the
+     clip boundary each frame instead of repainting the photo underneath —
+     without this, large full-bleed images (much bigger than the framed
+     ones) visibly lag behind the cheaper opacity/transform reveals. */
+  will-change: clip-path;
+  /* The promoted layer above can ignore a parent .frame's rounded
+     overflow-hidden clip while compositing, letting square corners bleed
+     past the card during the wipe. Clip on this layer itself so it never
+     depends on the ancestor. */
+  overflow: hidden;
+  border-radius: inherit;
 }
 
 .reveal-clip[data-shown="true"] {

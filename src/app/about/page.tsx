@@ -5,7 +5,15 @@ import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { Eyebrow } from "@/components/eyebrow";
 import { Reveal, MaskLine } from "@/components/reveal";
-import { company, timeline, leadership, divisions, principles, units } from "@/lib/content";
+import {
+  company,
+  timeline,
+  leadership,
+  testimonials,
+  divisions,
+  principles,
+  units,
+} from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
@@ -32,31 +40,33 @@ export default function AboutPage() {
       <section className="shell section-y">
         <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Reveal>
-              <Eyebrow className="text-accent">01 — Our story</Eyebrow>
-            </Reveal>
-            <Reveal variant="lines" className="mt-6">
-              <h2 className="display-lg">
-                <MaskLine>Built on engineering.</MaskLine>
-                <MaskLine delay={100}>
-                  <span className="text-muted">Driven by trust.</span>
-                </MaskLine>
-              </h2>
-            </Reveal>
+            <div className="md:sticky md:top-28">
+              <Reveal>
+                <Eyebrow className="text-accent">01 — Our story</Eyebrow>
+              </Reveal>
+              <Reveal variant="lines" className="mt-6">
+                <h2 className="display-lg">
+                  <MaskLine>Built on engineering.</MaskLine>
+                  <MaskLine delay={100}>
+                    <span className="text-muted">Driven by trust.</span>
+                  </MaskLine>
+                </h2>
+              </Reveal>
 
-            <Reveal
-              variant="clip"
-              delay={200}
-              className="frame relative mt-12 block aspect-[4/3] w-full"
-            >
-              <Image
-                src="/images/workshop.jpg"
-                alt="Fabrication and finishing floor"
-                fill
-                sizes="(min-width: 768px) 40vw, 100vw"
-                className="object-cover"
-              />
-            </Reveal>
+              <Reveal
+                variant="clip"
+                delay={200}
+                className="frame relative mt-12 block aspect-[4/3] w-full"
+              >
+                <Image
+                  src="/images/workshop.jpg"
+                  alt="Fabrication and finishing floor"
+                  fill
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              </Reveal>
+            </div>
           </div>
 
           <div className="md:col-span-6 md:col-start-7">
@@ -191,11 +201,43 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══════════════ 03 — FACILITIES ══════════════ */}
+      {/* ══════════════ 03 — TESTIMONIALS ══════════════ */}
+      <section className="border-t border-line section-y">
+        <div className="shell">
+          <SectionHeading eyebrow="03 — Testimonials" lines={["From the people", "who work here."]} />
+
+          <div className="mt-14 flex flex-col gap-16 md:mt-20">
+            {testimonials.map((person, i) => (
+              <Reveal
+                key={person.name}
+                delay={i * 110}
+                className="mx-auto max-w-2xl text-center"
+              >
+                <div className="mx-auto h-24 w-24 overflow-hidden rounded-full md:h-28 md:w-28">
+                  <Image
+                    src={person.photo}
+                    alt={person.name}
+                    width={112}
+                    height={112}
+                    className="h-full w-full object-cover object-[center_20%]"
+                  />
+                </div>
+                <p className="font-display mt-8 text-2xl leading-snug font-medium tracking-tight text-ink md:text-3xl">
+                  &ldquo;{person.quote}&rdquo;
+                </p>
+                <p className="label mt-8 text-accent">{person.name}</p>
+                <p className="label mt-1 text-muted">{person.role}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════ 04 — FACILITIES ══════════════ */}
       <section className="bg-ink text-paper section-y">
         <div className="shell">
           <SectionHeading
-            eyebrow="03 — Facilities"
+            eyebrow="04 — Facilities"
             lines={["Two units,", <span key="b" className="text-muted-dim">one standard.</span>]}
             intro="15,000 sq ft of covered production across 80,000 sq ft of company-owned land in Coimbatore."
             tone="light"
@@ -264,10 +306,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══════════════ 04 — PRINCIPLES ══════════════ */}
+      {/* ══════════════ 05 — PRINCIPLES ══════════════ */}
       <section className="shell section-y">
         <SectionHeading
-          eyebrow="04 — Core principles"
+          eyebrow="05 — Core principles"
           lines={["What we hold", "ourselves to."]}
         />
 

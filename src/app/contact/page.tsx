@@ -52,9 +52,11 @@ export default function ContactPage() {
       <section className="shell section-y">
         <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-12">
           <div className="md:col-span-7">
-            <Reveal>
-              <EnquiryForm />
-            </Reveal>
+            <div className="md:sticky md:top-28">
+              <Reveal>
+                <EnquiryForm />
+              </Reveal>
+            </div>
           </div>
 
           <div className="md:col-span-5">
@@ -139,27 +141,37 @@ export default function ContactPage() {
           <div className="mt-14 grid gap-8 md:mt-20 md:grid-cols-2">
             {units.map((unit, i) => (
               <Reveal key={unit.tag} delay={i * 120}>
-                <div className="frame relative aspect-[4/3] w-full border border-line bg-paper">
+                <div className="frame relative aspect-[4/3] w-full border border-line bg-paper transition-colors duration-300 hover:border-ink">
+                  {/* Google's address-query embed always draws a place-info
+                      card over the top ~9rem — crop it out by rendering the
+                      iframe taller and shifting it up by the same amount,
+                      which leaves the map, pin and required attribution
+                      footer untouched (the footer stays glued to the
+                      container's bottom edge since height and top-offset
+                      cancel out). */}
                   <iframe
                     src={unit.embed}
                     title={`Map of ${unit.name}`}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="absolute inset-0 h-full w-full border-0"
+                    className="absolute -top-36 inset-x-0 h-[calc(100%+9rem)] w-full border-0"
                   />
                 </div>
-                <div className="mt-5 flex flex-wrap items-baseline justify-between gap-4">
+                <div className="mt-6 flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <p className="label text-accent">{unit.tag}</p>
-                    <p className="mt-2.5 text-base tracking-tight">{unit.name}</p>
+                    <span className="chip label text-accent">{unit.tag}</span>
+                    <p className="mt-3.5 text-lg font-medium tracking-tight">{unit.name}</p>
+                    <p className="mt-1.5 max-w-xs text-sm leading-relaxed text-muted">
+                      {unit.address}
+                    </p>
                   </div>
                   <a
                     href={unit.map}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="label text-muted transition-colors hover:text-ink"
+                    className="btn label shrink-0 border border-line text-ink hover:border-ink"
                   >
-                    Open in Google Maps ↗
+                    Open in Maps ↗
                   </a>
                 </div>
               </Reveal>

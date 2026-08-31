@@ -21,10 +21,12 @@ export function PageHero({
   lines: [string, string?];
   intro: string;
   aside?: ReactNode;
-  band?: { src: string; alt: string; caption: string };
+  band?:
+    | { src: string; video?: never; poster?: never; alt: string; caption: string }
+    | { src?: never; video: string; poster?: string; alt: string; caption: string };
 }) {
   return (
-    <section className="relative pt-32 md:pt-40 lg:pt-48">
+    <section className="relative pt-28 md:pt-32 lg:pt-36">
       <div className="shell">
         <Reveal className="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-2 pb-7">
           <Eyebrow className="text-accent">{eyebrow}</Eyebrow>
@@ -68,14 +70,27 @@ export function PageHero({
           delay={160}
           className="relative block h-[36vh] min-h-[240px] w-full md:h-[48vh]"
         >
-          <Image
-            src={band.src}
-            alt={band.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          {band.video ? (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={band.poster}
+              className="absolute inset-0 h-full w-full object-cover"
+            >
+              <source src={band.video} type="video/mp4" />
+            </video>
+          ) : (
+            <Image
+              src={band.src}
+              alt={band.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 via-40% to-transparent" />
           <div className="shell absolute inset-x-0 bottom-0 pb-7">
             <p className="label text-paper/85">{band.caption}</p>

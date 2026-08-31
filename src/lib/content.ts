@@ -15,10 +15,25 @@ export const company = {
   hours: "09:00 — 18:30, Monday to Saturday",
 };
 
+export const heroSlides = [
+  {
+    lines: ["Built", "to last"] as [string, string],
+    sub: "Industrial powder coating and precision-engineered power electronics — manufactured, tested and warranted in-house across two purpose-built facilities in Coimbatore.",
+  },
+  {
+    lines: ["Precision", "in every coat"] as [string, string],
+    sub: "A seven-stage pre-treatment and ITW Gema electrostatic application behind every finish, cured to a controlled 205–215°C.",
+  },
+  {
+    lines: ["Two units.", "One standard."] as [string, string],
+    sub: "15,000 sq ft of covered production across 80,000 sq ft of company-owned land — the same standard applied to a single panel board or a 15 ft fabrication.",
+  },
+];
+
 export const nav = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Contact", href: "/contact" },
 ];
@@ -211,6 +226,16 @@ export const leadership = [
     domain: "Electrical & Electronics",
     bio: "The technical backbone of Renson. Drives design innovation and execution quality across both the electronic and powder coating divisions, holding every batch to the same standard.",
     credentials: ["Electrical & Electronics Engineer", "Innovation Strategy Head"],
+  },
+];
+
+export const testimonials = [
+  {
+    name: "Renita Katherine",
+    role: "Manager",
+    photo: "/images/Team/renita.jpg",
+    quote:
+      "What stands out to me is that quality here isn't assumed — it's checked. Every order is measured and signed off before dispatch, whether it's a single panel board or a fifteen-foot fabrication, and that consistency is what keeps our clients coming back year after year.",
   },
 ];
 

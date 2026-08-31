@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal, MaskLine } from "@/components/reveal";
+import { RotatingHero } from "@/components/rotating-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { Eyebrow } from "@/components/eyebrow";
 import { BigLink } from "@/components/big-link";
 import { Counter } from "@/components/counter";
 import {
   company,
+  heroSlides,
   stats,
   capabilities,
   process,
@@ -23,25 +25,22 @@ export default function HomePage() {
         data-dark-hero
         className="relative flex h-[100svh] min-h-[600px] w-full flex-col justify-end overflow-hidden"
       >
-        <Image
-          src="/images/hero-coating.jpg"
-          alt="Technician applying powder coating to a large metal frame inside a spray booth"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero-video-poster.jpg"
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/20 to-ink/90" />
         {/* keeps the headline legible whatever the photograph is doing behind it */}
         <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/10 to-transparent" />
 
         <div className="shell relative pb-10 md:pb-14">
-          <Reveal variant="lines">
-            <h1 className="display-xl text-paper">
-              <MaskLine>Built</MaskLine>
-              <MaskLine delay={110}>to last</MaskLine>
-            </h1>
-          </Reveal>
+          <RotatingHero slides={heroSlides} />
 
           <Reveal
             delay={320}
@@ -53,23 +52,12 @@ export default function HomePage() {
               MSME Registered
             </p>
 
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="btn label group border border-paper bg-paper text-ink hover:bg-transparent hover:text-paper"
-              >
-                Start a project
-                <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
-                  →
-                </span>
-              </Link>
-              <Link
-                href="/services"
-                className="btn label border border-paper/40 text-paper hover:border-paper"
-              >
-                Our capabilities
-              </Link>
-            </div>
+            <Link
+              href="/services"
+              className="btn label border border-paper/40 text-paper hover:border-paper"
+            >
+              Our capabilities
+            </Link>
           </Reveal>
         </div>
       </section>
@@ -106,7 +94,8 @@ export default function HomePage() {
       {/* Full-bleed interlude */}
       <Reveal
         variant="clip"
-        className="relative block h-[52vh] min-h-[300px] w-full md:h-[68vh]"
+        delay={160}
+        className="relative block h-[36vh] min-h-[240px] w-full md:h-[48vh]"
       >
         <Image
           src="/images/facility.jpg"
@@ -115,6 +104,12 @@ export default function HomePage() {
           sizes="100vw"
           className="object-cover"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 via-40% to-transparent" />
+        <div className="shell absolute inset-x-0 bottom-0 pb-7">
+          <p className="label text-paper/85">
+            Production hall with press machinery and overhead gantry
+          </p>
+        </div>
       </Reveal>
 
       {/* ══════════════ 01 — WHO WE ARE ══════════════ */}
@@ -327,12 +322,18 @@ export default function HomePage() {
             className="frame relative mt-14 block aspect-[16/9] w-full md:mt-20 md:aspect-[24/9]"
           >
             <Image
-              src="/images/facility.jpg"
-              alt="Production hall with press machinery and overhead gantry"
+              src="/images/hero-coating.jpg"
+              alt="Technician applying powder coating to a large metal frame inside a spray booth"
               fill
               sizes="100vw"
               className="object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 via-40% to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+              <p className="label text-paper/85">
+                Technician applying powder coating to a large metal frame inside a spray booth
+              </p>
+            </div>
           </Reveal>
 
           <div className="mt-14 grid border-t border-ink-line md:mt-16 md:grid-cols-2">
@@ -393,12 +394,18 @@ export default function HomePage() {
               className="frame relative block aspect-[4/3] w-full"
             >
               <Image
-                src="/images/finishes.jpg"
+                src="/images/finishes-fan.jpg"
                 alt="Fan of powder coating colour swatches"
                 fill
                 sizes="(min-width: 768px) 46vw, 100vw"
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 via-40% to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                <p className="label text-paper/85">
+                  Fan of powder coating colour swatches
+                </p>
+              </div>
             </Reveal>
           </div>
 
