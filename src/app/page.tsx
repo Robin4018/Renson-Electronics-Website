@@ -174,16 +174,18 @@ export default function HomePage() {
       {/* ══════════════ STATS ══════════════ */}
       <section className="border-y border-line bg-paper-dim">
         <div className="shell">
-          {/* gap-y is 0 at every width: each cell draws its own top rule, so a
-              row gap put empty space between a cell and the rule belonging to
-              the cell beneath it — 120px of it on a phone, once the cells' own
-              py was counted twice. The rules carry the rhythm instead. */}
-          <dl className="grid grid-cols-2 gap-x-8 md:grid-cols-3 md:gap-x-12 lg:grid-cols-5 lg:gap-x-0">
+          {/* Reflowing five stats into rows on a phone broke the row of ruled
+              columns that carries the whole idea — and left the fifth stat
+              orphaned. Below lg the row is kept intact and scrolled sideways
+              instead, one stat snapping into place at a time, so the reading
+              is the same as on a desktop. From lg up all five fit and it is a
+              plain grid again. */}
+          <dl className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto lg:grid lg:grid-cols-5 lg:overflow-x-visible">
             {stats.map((stat, i) => (
               <Reveal
                 key={stat.label}
                 delay={i * 70}
-                className="hairline flex flex-col py-7 last:col-span-2 md:py-10 md:last:col-span-1 lg:border-r lg:border-line lg:pr-10 lg:pl-10 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
+                className="hairline flex w-[58vw] shrink-0 snap-start flex-col border-r border-line py-7 pr-6 last:border-r-0 sm:w-[40vw] md:w-[30vw] lg:w-auto lg:py-10 lg:pr-10 lg:pl-10 lg:first:pl-0 lg:last:pr-0"
               >
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="display-md font-display text-ink">
@@ -268,7 +270,7 @@ export default function HomePage() {
 
       {/* ══════════════ 03 — PROCESS ══════════════ */}
       <section className="shell section-y">
-        <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-12">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-12 md:gap-y-14">
           <div className="md:col-span-4">
             <div className="md:sticky md:top-32">
               <Reveal>
@@ -299,7 +301,7 @@ export default function HomePage() {
                 key={item.step}
                 delay={(i % 4) * 60}
                 as="li"
-                className="group grid grid-cols-[2.5rem_1fr] items-baseline gap-x-4 border-b border-line py-6 first:border-t md:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1.15fr)] md:gap-x-8"
+                className="group grid grid-cols-[2rem_1fr] items-baseline gap-x-3 border-b border-line py-4 first:border-t md:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1.15fr)] md:gap-x-8 md:py-6"
               >
                 <span className="label text-muted transition-colors duration-300 group-hover:text-accent">
                   {item.step}
@@ -307,7 +309,7 @@ export default function HomePage() {
                 <h3 className="text-lg font-medium tracking-tight md:text-xl">
                   {item.name}
                 </h3>
-                <p className="col-start-2 mt-2.5 text-sm leading-relaxed text-ink/60 md:col-start-3 md:mt-0">
+                <p className="col-start-2 mt-1.5 text-sm leading-snug text-ink/60 md:col-start-3 md:mt-0 md:leading-relaxed">
                   {item.detail}
                 </p>
               </Reveal>
@@ -346,15 +348,17 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <div className="mt-10 grid border-t border-ink-line md:mt-12 md:grid-cols-2">
+          {/* Below md the two units are separate cards rather than one run of
+              text split by a hairline — on a phone the comparison is read one
+              unit at a time, not side by side, so each needs its own edge.
+              From md up the original two-column comparison returns. */}
+          <div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-0 md:border-t md:border-ink-line">
             {units.map((unit, i) => (
               <Reveal
                 key={unit.tag}
                 delay={i * 110}
-                className={`py-10 md:py-14 ${
-                  i === 0
-                    ? "border-b border-ink-line md:border-b-0 md:pr-12"
-                    : "md:border-l md:border-ink-line md:pl-12"
+                className={`max-md:rounded-[10px] max-md:border max-md:border-ink-line max-md:p-6 md:py-14 ${
+                  i === 0 ? "md:pr-12" : "md:border-l md:border-ink-line md:pl-12"
                 }`}
               >
                 <div className="flex items-center justify-between gap-4">
@@ -371,19 +375,23 @@ export default function HomePage() {
                   </a>
                 </div>
 
-                <h3 className="display-md mt-9">{unit.name}</h3>
+                <h3 className="display-md mt-6 md:mt-9">{unit.name}</h3>
                 <p className="mt-4 max-w-sm text-sm leading-relaxed text-paper/60">
                   {unit.address}
                 </p>
 
-                <dl className="mt-10">
+                <dl className="mt-6 md:mt-10">
                   {unit.rows.map(([key, value]) => (
                     <div
                       key={key}
-                      className="hairline-dark flex items-baseline justify-between gap-6 py-4"
+                      className="hairline-dark flex flex-col gap-1 py-3 md:flex-row md:items-baseline md:justify-between md:gap-6 md:py-4"
                     >
                       <dt className="label text-muted-dim">{key}</dt>
-                      <dd className="text-right text-sm font-medium tracking-tight text-paper">
+                      {/* Key over value on a phone: side by side, a long value
+                          like "Manual 5-tank (Aluminium & M.S.)" wrapped to two
+                          right-aligned lines and squeezed the key into two of
+                          its own. */}
+                      <dd className="text-sm font-medium tracking-tight text-paper md:text-right">
                         {value}
                       </dd>
                     </div>
