@@ -20,32 +20,6 @@ export default function ContactPage() {
         meta={company.hours}
         lines={["Industrial solutions", "are one message away."]}
         intro="Whether you have a custom powder coating requirement or need technical support for our electronic products, our team is ready to assist across both Coimbatore units."
-        aside={
-          <dl className="grid grid-cols-2 gap-px bg-line">
-            <div className="bg-paper pr-6 pb-6">
-              <dt className="label text-muted">Call</dt>
-              <dd className="mt-3">
-                <a
-                  href={`tel:${company.phoneHref}`}
-                  className="text-lg tracking-tight transition-colors hover:text-accent"
-                >
-                  {company.phone}
-                </a>
-              </dd>
-            </div>
-            <div className="bg-paper pb-6 pl-6">
-              <dt className="label text-muted">Email</dt>
-              <dd className="mt-3">
-                <a
-                  href={`mailto:${company.email}`}
-                  className="text-sm break-all transition-colors hover:text-accent"
-                >
-                  {company.email}
-                </a>
-              </dd>
-            </div>
-          </dl>
-        }
         band={{
           src: "/images/contact-band-motor-bodies.jpg",
           alt: "Rows of machined aluminium motor bodies stacked in the works",
