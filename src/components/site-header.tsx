@@ -181,20 +181,29 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Mobile overlay */}
+      {/* Mobile overlay.
+
+          It scrolls. The panel used to be exactly h-full with no overflow,
+          while the body behind it is locked the whole time the menu is open —
+          so on any screen too short for five items plus the contact block,
+          the bottom of the menu was simply stranded: 105px of it out of reach
+          at 430px, which is a small phone, or any phone held sideways.
+          min-h-full lets the panel grow past the screen and overflow-y-auto
+          lets a thumb reach the rest of it; overscroll-contain stops the
+          scroll handing off to the page underneath at the ends. */}
       <div
-        className={`fixed inset-0 z-40 bg-ink transition-[opacity,visibility] duration-500 lg:hidden ${
+        className={`fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-ink transition-[opacity,visibility] duration-500 lg:hidden ${
           open ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
-        <div className="shell flex h-full flex-col justify-between pt-28 pb-12">
+        <div className="shell flex min-h-full flex-col justify-between pt-24 pb-[calc(3rem+env(safe-area-inset-bottom,0px))] sm:pt-28">
           <nav className="flex flex-col" aria-label="Mobile">
             {nav.map((item, i) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="hairline-dark flex items-baseline justify-between gap-6 py-5 last:border-b last:border-ink-line"
+                className="hairline-dark flex items-baseline justify-between gap-6 py-4 last:border-b last:border-ink-line sm:py-5"
                 style={{
                   transitionDelay: `${open ? 140 + i * 60 : 0}ms`,
                   transform: open ? "none" : "translateY(14px)",
@@ -210,7 +219,7 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div>
+          <div className="pt-10">
             <p className="label mb-4 text-muted-dim">Get in touch</p>
             <a
               href={`tel:${company.phoneHref}`}
