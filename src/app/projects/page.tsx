@@ -37,7 +37,7 @@ export default function ProjectsPage() {
 
         <div className="shell relative pb-10 md:pb-14">
           <Reveal>
-            <Eyebrow className="mb-6 text-accent-soft">C — Projects</Eyebrow>
+            <Eyebrow className="mb-6 text-accent-soft">Projects</Eyebrow>
           </Reveal>
 
           <Reveal variant="lines">
@@ -72,7 +72,7 @@ export default function ProjectsPage() {
       {/* ══════════════ 01 — SELECTED WORK ══════════════ */}
       <section className="shell section-y">
         <SectionHeading
-          eyebrow="01 — Selected work"
+          eyebrow="Selected work"
           lines={["Three divisions,", "one benchmark."]}
           intro="Each division runs its own line and its own quality gate — but every order leaves under the same dispatch commitment."
         />
@@ -146,7 +146,7 @@ export default function ProjectsPage() {
       <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
-            eyebrow="02 — On the floor"
+            eyebrow="On the floor"
             lines={["Finish, tolerance,", "repeatability."]}
             intro="Colour matched to specification, thickness checked on every batch, and the same result the second time you order it."
           />
@@ -182,7 +182,7 @@ export default function ProjectsPage() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <Reveal>
-              <Eyebrow className="text-accent">03 — Who we work with</Eyebrow>
+              <Eyebrow className="text-accent">Who we work with</Eyebrow>
               <h2 className="display-lg mt-6">
                 Industries
                 <br />

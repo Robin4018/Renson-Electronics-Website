@@ -118,7 +118,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-12">
           <div className="md:col-span-4 lg:col-span-3">
             <Reveal>
-              <Eyebrow className="text-accent">01 — Who we are</Eyebrow>
+              <Eyebrow className="text-accent">Who we are</Eyebrow>
               <dl className="mt-8">
                 {[
                   ["Founded", "1986, Coimbatore"],
@@ -195,7 +195,7 @@ export default function HomePage() {
       <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
-            eyebrow="02 — Core capabilities"
+            eyebrow="Core capabilities"
             lines={["Three pillars of", "industrial excellence."]}
             intro="Precision-engineered solutions trusted by manufacturers, fabricators and OEMs across Tamil Nadu."
           />
@@ -263,7 +263,7 @@ export default function HomePage() {
           <div className="md:col-span-4">
             <div className="md:sticky md:top-32">
               <Reveal>
-                <Eyebrow className="text-accent">03 — The standard</Eyebrow>
+                <Eyebrow className="text-accent">The standard</Eyebrow>
                 <h2 className="display-lg mt-6">
                   Ten steps.
                   <br />
@@ -311,7 +311,7 @@ export default function HomePage() {
       <section className="bg-ink text-paper section-y">
         <div className="shell">
           <SectionHeading
-            eyebrow="04 — Infrastructure"
+            eyebrow="Infrastructure"
             lines={["Two units,", <span key="b" className="text-muted-dim">one standard.</span>]}
             intro="15,000 sq ft of covered production across 80,000 sq ft of company-owned land in Coimbatore."
             tone="light"
@@ -412,7 +412,7 @@ export default function HomePage() {
 
           <div className="md:col-span-5 md:col-start-8">
             <Reveal>
-              <Eyebrow className="text-accent">05 — Colour &amp; finish</Eyebrow>
+              <Eyebrow className="text-accent">Colour &amp; finish</Eyebrow>
               <h2 className="display-lg mt-6">
                 Any shade.
                 <br />
@@ -445,7 +445,7 @@ export default function HomePage() {
       <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
-            eyebrow="06 — Why Renson"
+            eyebrow="Why Renson"
             lines={["Precision in", "every layer."]}
             intro="Nearly four decades of manufacturing experience and two purpose-built facilities that industry leaders depend on."
           />
@@ -472,7 +472,7 @@ export default function HomePage() {
       <section className="border-t border-ink-line bg-ink text-paper section-y">
         <div className="shell">
           <SectionHeading
-            eyebrow="07 — Documentation"
+            eyebrow="Documentation"
             lines={["Registered, certified.", "Ready to ship."]}
             intro="An MSME, GST and UDYAM registered proprietary firm, trusted by industries across Tamil Nadu since 1986."
             tone="light"

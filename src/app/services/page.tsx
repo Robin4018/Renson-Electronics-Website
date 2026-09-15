@@ -52,7 +52,7 @@ export default function ServicesPage() {
 
         <div className="shell relative pb-10 md:pb-14">
           <Reveal>
-            <Eyebrow className="mb-6 text-accent-soft">B — Services</Eyebrow>
+            <Eyebrow className="mb-6 text-accent-soft">Services</Eyebrow>
           </Reveal>
 
           <Reveal variant="lines">
@@ -89,7 +89,7 @@ export default function ServicesPage() {
       {/* ══════════════ POWDER COATING ══════════════ */}
       <section id="powder-coating" className="shell section-y scroll-mt-40">
         <SectionHeading
-          eyebrow="01 — Surface finishing"
+          eyebrow="Surface finishing"
           lines={["Professional powder", "coating services."]}
           intro="Industrial-grade electrostatic application across two dedicated units, with a comprehensive pre-treatment line behind every finish."
         />
@@ -243,7 +243,7 @@ export default function ServicesPage() {
       >
         <div className="shell">
           <SectionHeading
-            eyebrow="02 — Electronic division"
+            eyebrow="Power conditioning"
             lines={["Precision voltage", "stabilizers."]}
             intro="Manufacturing and supplying stabilizers since 1986, engineered for wide input ranges and stable output."
           />
@@ -327,7 +327,7 @@ export default function ServicesPage() {
       <section id="battery-chargers" className="bg-ink text-paper section-y scroll-mt-40">
         <div className="shell">
           <SectionHeading
-            eyebrow="03 — Electronic division"
+            eyebrow="Battery charging"
             lines={["Reliable battery", <span key="b" className="text-muted-dim">chargers.</span>]}
             intro="Engineered for consistent output and long operational life. Every unit is tested before dispatch and backed by our own after-sales team."
             tone="light"

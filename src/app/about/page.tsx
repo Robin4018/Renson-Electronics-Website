@@ -25,7 +25,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="A — About"
+        eyebrow="About"
         meta={`Est. ${company.since} — ${company.location}`}
         lines={["Legacy of", "excellence."]}
         intro="Four decades of engineering precision and industrial trust in Coimbatore — built by engineers, sustained by the clients who keep coming back."
@@ -42,7 +42,7 @@ export default function AboutPage() {
           <div className="md:col-span-5">
             <div className="md:sticky md:top-28">
               <Reveal>
-                <Eyebrow className="text-accent">01 — Our story</Eyebrow>
+                <Eyebrow className="text-accent">Our story</Eyebrow>
               </Reveal>
               <Reveal variant="lines" className="mt-6">
                 <h2 className="display-lg">
@@ -132,7 +132,7 @@ export default function AboutPage() {
       <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
-            eyebrow="02 — Leadership"
+            eyebrow="Leadership"
             lines={["The people behind", "Renson Electronics."]}
             intro="Two generations of engineers, one standard of execution held across every division."
           />
@@ -210,7 +210,7 @@ export default function AboutPage() {
       {/* ══════════════ 03 — CEO SPOTLIGHT ══════════════ */}
       <section className="border-t border-line section-y">
         <div className="shell">
-          <SectionHeading eyebrow="03 — Leadership" lines={["A word from", "our CEO."]} />
+          <SectionHeading eyebrow="From the CEO" lines={["A word from", "our CEO."]} />
 
           <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 md:mt-20 md:grid-cols-12 md:items-center">
             <Reveal
@@ -249,7 +249,7 @@ export default function AboutPage() {
       <section className="bg-ink text-paper section-y">
         <div className="shell">
           <SectionHeading
-            eyebrow="04 — Facilities"
+            eyebrow="Facilities"
             lines={["Two units,", <span key="b" className="text-muted-dim">one standard.</span>]}
             intro="15,000 sq ft of covered production across 80,000 sq ft of company-owned land in Coimbatore."
             tone="light"
@@ -321,7 +321,7 @@ export default function AboutPage() {
       {/* ══════════════ 05 — PRINCIPLES ══════════════ */}
       <section className="shell section-y">
         <SectionHeading
-          eyebrow="05 — Core principles"
+          eyebrow="Core principles"
           lines={["What we hold", "ourselves to."]}
         />
 

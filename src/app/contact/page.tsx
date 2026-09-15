@@ -16,7 +16,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="D — Contact"
+        eyebrow="Contact"
         meta={company.hours}
         lines={["Industrial solutions", "are one message away."]}
         intro="Whether you have a custom powder coating requirement or need technical support for our electronic products, our team is ready to assist across both Coimbatore units."
@@ -67,7 +67,7 @@ export default function ContactPage() {
           <div className="md:col-span-5">
             <div className="md:sticky md:top-28">
               <Reveal delay={140}>
-                <Eyebrow className="text-accent">01 — Our facilities</Eyebrow>
+                <Eyebrow className="text-accent">Our facilities</Eyebrow>
                 <h2 className="display-md mt-6">Two manufacturing units.</h2>
               </Reveal>
 
@@ -128,7 +128,7 @@ export default function ContactPage() {
       <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
-            eyebrow="02 — Facility map"
+            eyebrow="Facility map"
             lines={["Visit our", "manufacturing units."]}
             intro="Both units sit within Coimbatore — Unit I off Kalapatti Road, Unit II at Vellanapatti near the COINDIA foundry division."
           />
