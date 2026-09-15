@@ -92,17 +92,27 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="hairline-dark flex flex-col gap-3 py-5 md:flex-row md:items-center md:justify-between md:gap-10 md:py-7">
-          {/* A registry number trailing its own label put the two numbers at
-              different left edges once they stacked on a phone — "GST" and
-              "UDYAM" are different widths. As a two-column pair the labels
-              share one edge and the numbers share another. From md up the
-              flex row restores the original inline reading. */}
-          <dl className="grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-3 gap-y-1 md:flex md:flex-wrap md:gap-x-2 md:gap-y-2">
-            <dt className="label text-muted-dim">GST</dt>
-            <dd className="label text-paper/70 md:mr-6">{company.gst}</dd>
-            <dt className="label text-muted-dim">UDYAM</dt>
-            <dd className="label text-paper/70">{company.udyam}</dd>
+        <div className="hairline-dark flex flex-col gap-4 py-5 md:flex-row md:items-center md:justify-between md:gap-10 md:py-7">
+          {/* Both registry numbers on one row. Each label stays with its own
+              number as a pair, and the pairs are set a step smaller on a
+              phone so the two fit the width together rather than stacking. */}
+          <dl className="flex flex-wrap items-baseline gap-x-5 gap-y-1 md:gap-x-8">
+            <div className="flex items-baseline gap-2">
+              <dt className="label text-[0.6875rem] text-muted-dim md:text-[0.8125rem]">
+                GST
+              </dt>
+              <dd className="label text-[0.6875rem] text-paper/70 md:text-[0.8125rem]">
+                {company.gst}
+              </dd>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <dt className="label text-[0.6875rem] text-muted-dim md:text-[0.8125rem]">
+                UDYAM
+              </dt>
+              <dd className="label text-[0.6875rem] text-paper/70 md:text-[0.8125rem]">
+                {company.udyam}
+              </dd>
+            </div>
           </dl>
           {/* On a phone the brand line and the copyright share one row rather
               than taking one each; md:contents dissolves this wrapper so the
@@ -112,7 +122,7 @@ export function SiteFooter() {
               so pairing them saved no height and cost legibility. Stacked,
               each fits one line. md:contents still dissolves the wrapper so
               the desktop row keeps its three-group arrangement. */}
-          <div className="flex flex-col gap-1 md:contents">
+          <div className="flex flex-col gap-1.5 md:contents">
             <p className="label text-muted-dim">{company.tagline}</p>
             <p className="label text-muted-dim">
               © {new Date().getFullYear()} {company.name}
