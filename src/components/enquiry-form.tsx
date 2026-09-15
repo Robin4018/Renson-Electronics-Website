@@ -205,10 +205,6 @@ export function EnquiryForm() {
           →
         </span>
       </button>
-
-      <p className="label mt-6 text-muted">
-        Or call {company.phone} — {company.hours}
-      </p>
     </form>
   );
 }
