@@ -93,19 +93,26 @@ export function SiteFooter() {
         </div>
 
         <div className="hairline-dark flex flex-col gap-3 py-5 md:flex-row md:items-center md:justify-between md:gap-10 md:py-7">
-          <div className="flex flex-wrap gap-x-6 gap-y-1 md:gap-x-8 md:gap-y-2">
-            <span className="label text-muted-dim">
-              GST <span className="ml-2 text-paper/70">{company.gst}</span>
-            </span>
-            <span className="label text-muted-dim">
-              UDYAM <span className="ml-2 text-paper/70">{company.udyam}</span>
-            </span>
-          </div>
+          {/* A registry number trailing its own label put the two numbers at
+              different left edges once they stacked on a phone — "GST" and
+              "UDYAM" are different widths. As a two-column pair the labels
+              share one edge and the numbers share another. From md up the
+              flex row restores the original inline reading. */}
+          <dl className="grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-3 gap-y-1 md:flex md:flex-wrap md:gap-x-2 md:gap-y-2">
+            <dt className="label text-muted-dim">GST</dt>
+            <dd className="label text-paper/70 md:mr-6">{company.gst}</dd>
+            <dt className="label text-muted-dim">UDYAM</dt>
+            <dd className="label text-paper/70">{company.udyam}</dd>
+          </dl>
           {/* On a phone the brand line and the copyright share one row rather
               than taking one each; md:contents dissolves this wrapper so the
               desktop row stays the three-group arrangement it was. Brand line
               first, copyright last — a closing notice belongs at the end. */}
-          <div className="flex items-baseline justify-between gap-4 md:contents">
+          {/* Side by side in a 380px row these two each wrapped to two lines,
+              so pairing them saved no height and cost legibility. Stacked,
+              each fits one line. md:contents still dissolves the wrapper so
+              the desktop row keeps its three-group arrangement. */}
+          <div className="flex flex-col gap-1 md:contents">
             <p className="label text-muted-dim">{company.tagline}</p>
             <p className="label text-muted-dim">
               © {new Date().getFullYear()} {company.name}
