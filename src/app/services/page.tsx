@@ -94,7 +94,7 @@ export default function ServicesPage() {
           intro="Industrial-grade electrostatic application across two dedicated units, with a comprehensive pre-treatment line behind every finish."
         />
 
-        <div className="mt-14 grid grid-cols-1 items-center gap-x-8 gap-y-12 md:mt-20 md:grid-cols-12">
+        <div className="mt-10 grid grid-cols-1 items-center gap-x-8 gap-y-12 md:mt-14 md:grid-cols-12">
           <Reveal
             variant="clip"
             className="frame relative block aspect-[4/3] w-full md:col-span-6"
@@ -139,7 +139,7 @@ export default function ServicesPage() {
         </div>
 
         {/* 10-step process */}
-        <Reveal className="mt-20 md:mt-28">
+        <Reveal className="mt-10 md:mt-14">
           <Eyebrow className="text-accent">The standard</Eyebrow>
           <h3 className="display-md mt-5">10-step coating process</h3>
         </Reveal>
@@ -162,7 +162,7 @@ export default function ServicesPage() {
         </ol>
 
         {/* Unit comparison */}
-        <Reveal className="mt-20 md:mt-28">
+        <Reveal className="mt-10 md:mt-14">
           <Eyebrow className="text-accent">Unit comparison</Eyebrow>
           <h3 className="display-md mt-5">Scaling for all requirements</h3>
         </Reveal>
@@ -239,7 +239,7 @@ export default function ServicesPage() {
       {/* ══════════════ VOLTAGE STABILIZERS ══════════════ */}
       <section
         id="voltage-stabilizers"
-        className="border-t border-line bg-paper-dim section-y band-filled scroll-mt-40"
+        className="border-t border-line bg-paper-dim section-y scroll-mt-40"
       >
         <div className="shell">
           <SectionHeading
@@ -248,7 +248,7 @@ export default function ServicesPage() {
             intro="Manufacturing and supplying stabilizers since 1986, engineered for wide input ranges and stable output."
           />
 
-          <Reveal delay={120} className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal delay={120} className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-14 sm:grid-cols-2 lg:grid-cols-4">
             {stabilizerSpecs.map((spec) => (
               <div key={spec.label} className="bg-paper-dim px-7 py-9">
                 <p className="label text-muted">{spec.label}</p>
@@ -259,7 +259,7 @@ export default function ServicesPage() {
             ))}
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-12">
+          <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-12">
             <Reveal
               variant="clip"
               className="frame relative block aspect-[4/3] w-full md:col-span-5"
@@ -324,7 +324,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ══════════════ BATTERY CHARGERS ══════════════ */}
-      <section id="battery-chargers" className="bg-ink text-paper section-y band-filled scroll-mt-40">
+      <section id="battery-chargers" className="bg-ink text-paper section-y scroll-mt-40">
         <div className="shell">
           <SectionHeading
             eyebrow="Battery charging"
@@ -336,7 +336,7 @@ export default function ServicesPage() {
           <Reveal
             variant="clip"
             delay={120}
-            className="frame relative mt-14 block aspect-[16/9] w-full md:mt-20 md:aspect-[24/9]"
+            className="frame relative mt-10 block aspect-[16/9] w-full md:mt-14 md:aspect-[24/9]"
           >
             <Image
               src="/images/battery-chargers.jpg"
@@ -347,7 +347,7 @@ export default function ServicesPage() {
             />
           </Reveal>
 
-          <div className="mt-14 grid gap-px bg-ink-line md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-px bg-ink-line md:grid-cols-2 lg:grid-cols-3">
             {chargerFeatures.map((feature, i) => (
               <Reveal
                 key={feature.index}

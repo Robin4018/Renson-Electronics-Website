@@ -77,7 +77,7 @@ export default function ProjectsPage() {
           intro="Each division runs its own line and its own quality gate — but every order leaves under the same dispatch commitment."
         />
 
-        <div className="mt-14 md:mt-20">
+        <div className="mt-10 md:mt-14">
           {projects.map((project, i) => (
             <Reveal key={project.title} delay={i * 90}>
               <article className="grid grid-cols-1 gap-x-8 gap-y-8 border-t border-line py-12 last:border-b md:grid-cols-12 md:py-16">
@@ -136,14 +136,14 @@ export default function ProjectsPage() {
             </Reveal>
           ))}
 
-          <Reveal delay={120} className="mt-14">
+          <Reveal delay={120} className="mt-10">
             <BigLink href="/services">See how we make them</BigLink>
           </Reveal>
         </div>
       </section>
 
       {/* ══════════════ 02 — GALLERY ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y band-filled">
+      <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
             eyebrow="On the floor"
@@ -151,7 +151,7 @@ export default function ProjectsPage() {
             intro="Colour matched to specification, thickness checked on every batch, and the same result the second time you order it."
           />
 
-          <div className="mt-14 grid gap-6 md:mt-20 md:grid-cols-12">
+          <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-12">
             {gallery.map((item, i) => (
               <Reveal
                 key={item.src}

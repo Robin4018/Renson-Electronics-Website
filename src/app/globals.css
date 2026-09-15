@@ -166,44 +166,31 @@
     }
   }
 
-  /* Vertical rhythm — every band uses the same scale, driven by one value so
-     the ratio cannot drift between breakpoints. Top runs lighter than bottom
-     because two stacked bands each contribute an edge to the same seam.
+  /* Vertical rhythm — one symmetric measure on every band, so the seam
+     between any two is simply twice it and identical everywhere.
 
-     That intent used to be stated here and then broken at the widest step,
-     where top and bottom were both 6rem: the seam came out at 12rem — twice
-     the rhythm, and precisely the dead zone the rule exists to avoid. */
+     This replaced a scheme that tried to be cleverer: top lighter than
+     bottom, with adjacent-sibling rules collapsing the doubled seam. Those
+     rules only fire when two bands are literal siblings, and several are
+     separated by a nav or a divider, so the same seam came out anywhere
+     between 92px and 134px depending on the markup around it. A single value
+     cannot drift, needs no exceptions, and reads the same on every page. */
   .section-y {
-    --band-y: 3rem;
+    --band-y: 1.75rem;
     padding-top: var(--band-y);
-    padding-bottom: calc(var(--band-y) * 1.25);
+    padding-bottom: var(--band-y);
   }
 
   @media (min-width: 768px) {
     .section-y {
-      --band-y: 3.5rem;
+      --band-y: 2.25rem;
     }
   }
 
   @media (min-width: 1280px) {
     .section-y {
-      --band-y: 4rem;
+      --band-y: 2.5rem;
     }
-  }
-
-  /* A band that paints its own background shows its padding as interior space
-     rather than as the gap between two bands, so it keeps a full measure on
-     both sides. Collapsing its top would leave the box visibly top-tight. */
-  .section-y.band-filled {
-    padding-top: calc(var(--band-y) * 1.25);
-    padding-bottom: calc(var(--band-y) * 1.25);
-  }
-
-  /* Where one open band follows another, the seam is paid for once. The lower
-     band keeps a reduced share rather than dropping to zero, so a band that
-     draws its own top border still clears it. */
-  .section-y + .section-y:not(.band-filled) {
-    padding-top: calc(var(--band-y) * 0.5);
   }
 
   .hairline {

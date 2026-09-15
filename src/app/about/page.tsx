@@ -129,7 +129,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════ 02 — LEADERSHIP ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y band-filled">
+      <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
             eyebrow="Leadership"
@@ -137,7 +137,7 @@ export default function AboutPage() {
             intro="Two generations of engineers, one standard of execution held across every division."
           />
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-20 md:grid-cols-2">
+          <div className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-14 md:grid-cols-2">
             {leadership.map((person, i) => (
               <Reveal key={person.name} delay={i * 110} className="bg-paper-dim p-8 md:p-10">
                 <div className="flex items-start gap-5">
@@ -212,7 +212,7 @@ export default function AboutPage() {
         <div className="shell">
           <SectionHeading eyebrow="From the CEO" lines={["A word from", "our CEO."]} />
 
-          <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 md:mt-20 md:grid-cols-12 md:items-center">
+          <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 md:mt-14 md:grid-cols-12 md:items-center">
             <Reveal
               variant="clip"
               className="frame relative aspect-[4/5] w-full max-w-sm md:col-span-4"
@@ -246,7 +246,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════ 04 — FACILITIES ══════════════ */}
-      <section className="bg-ink text-paper section-y band-filled">
+      <section className="bg-ink text-paper section-y">
         <div className="shell">
           <SectionHeading
             eyebrow="Facilities"
@@ -255,7 +255,7 @@ export default function AboutPage() {
             tone="light"
           />
 
-          <div className="mt-14 grid border-t border-ink-line md:mt-20 md:grid-cols-2">
+          <div className="mt-10 grid border-t border-ink-line md:mt-14 md:grid-cols-2">
             {units.map((unit, i) => (
               <Reveal
                 key={unit.tag}
@@ -325,7 +325,7 @@ export default function AboutPage() {
           lines={["What we hold", "ourselves to."]}
         />
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-20 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-14 md:grid-cols-2 lg:grid-cols-4">
           {principles.map((principle, i) => (
             <Reveal
               key={principle.index}

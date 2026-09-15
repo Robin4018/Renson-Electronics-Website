@@ -74,7 +74,7 @@ export default function HomePage() {
           </h2>
         </Reveal>
 
-        <div className="mx-auto mt-12 grid max-w-3xl gap-x-12 gap-y-6 md:mt-16 md:grid-cols-2">
+        <div className="mx-auto mt-12 grid max-w-3xl gap-x-12 gap-y-6 md:mt-12 md:grid-cols-2">
           <Reveal delay={120}>
             <p className="text-sm leading-relaxed text-muted">
               Electrostatic powder coating across two dedicated units — a
@@ -192,7 +192,7 @@ export default function HomePage() {
 
 
       {/* ══════════════ 02 — CAPABILITIES ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y band-filled">
+      <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
             eyebrow="Core capabilities"
@@ -200,7 +200,7 @@ export default function HomePage() {
             intro="Precision-engineered solutions trusted by manufacturers, fabricators and OEMs across Tamil Nadu."
           />
 
-          <div className="mt-14 border-t border-line md:mt-20">
+          <div className="mt-10 border-t border-line md:mt-14">
             {capabilities.map((item, i) => (
               <Reveal key={item.title} delay={i * 80}>
                 <Link
@@ -251,7 +251,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <Reveal delay={140} className="mt-14">
+          <Reveal delay={140} className="mt-10">
             <BigLink href="/services">See all services</BigLink>
           </Reveal>
         </div>
@@ -308,7 +308,7 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ 04 — FACILITIES ══════════════ */}
-      <section className="bg-ink text-paper section-y band-filled">
+      <section className="bg-ink text-paper section-y">
         <div className="shell">
           <SectionHeading
             eyebrow="Infrastructure"
@@ -320,7 +320,7 @@ export default function HomePage() {
           <Reveal
             variant="clip"
             delay={120}
-            className="frame relative mt-14 block aspect-[16/9] w-full md:mt-20 md:aspect-[24/9]"
+            className="frame relative mt-10 block aspect-[16/9] w-full md:mt-14 md:aspect-[24/9]"
           >
             <Image
               src="/images/coating-line.jpg"
@@ -337,7 +337,7 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <div className="mt-14 grid border-t border-ink-line md:mt-16 md:grid-cols-2">
+          <div className="mt-10 grid border-t border-ink-line md:mt-12 md:grid-cols-2">
             {units.map((unit, i) => (
               <Reveal
                 key={unit.tag}
@@ -442,7 +442,7 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ 06 — WHY RENSON ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y band-filled">
+      <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
             eyebrow="Why Renson"
@@ -450,7 +450,7 @@ export default function HomePage() {
             intro="Nearly four decades of manufacturing experience and two purpose-built facilities that industry leaders depend on."
           />
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-20 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-14 md:grid-cols-2 lg:grid-cols-4">
             {differentiators.map((item, i) => (
               <Reveal
                 key={item.index}
@@ -469,7 +469,7 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ 07 — REGISTER & CERTIFICATE ══════════════ */}
-      <section className="border-t border-ink-line bg-ink text-paper section-y band-filled">
+      <section className="border-t border-ink-line bg-ink text-paper section-y">
         <div className="shell">
           <SectionHeading
             eyebrow="Documentation"
@@ -478,7 +478,7 @@ export default function HomePage() {
             tone="light"
           />
 
-          <div className="mt-14 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-8 md:mt-14 md:grid-cols-2">
             <Reveal className="flex flex-col rounded-[10px] border border-ink-line p-8 md:p-10">
               <p className="label text-muted-dim">Compliance</p>
               <dl className="mt-6 flex flex-1 flex-col justify-between">

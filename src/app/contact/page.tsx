@@ -125,7 +125,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════════ 02 — MAPS ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y band-filled">
+      <section className="border-t border-line bg-paper-dim section-y">
         <div className="shell">
           <SectionHeading
             eyebrow="Facility map"
@@ -133,7 +133,7 @@ export default function ContactPage() {
             intro="Both units sit within Coimbatore — Unit I off Kalapatti Road, Unit II at Vellanapatti near the COINDIA foundry division."
           />
 
-          <div className="mt-14 grid gap-8 md:mt-20 md:grid-cols-2">
+          <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-2">
             {units.map((unit, i) => (
               <Reveal key={unit.tag} delay={i * 120}>
                 {/* Google draws a place-info card over the top of this embed.
@@ -176,7 +176,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════════ CTA ══════════════ */}
-      <section className="bg-ink text-paper section-y band-filled">
+      <section className="bg-ink text-paper section-y">
         <div className="shell">
           <div className="grid grid-cols-1 items-end gap-x-8 gap-y-10 md:grid-cols-12">
             <div className="md:col-span-7">
