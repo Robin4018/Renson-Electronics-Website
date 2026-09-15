@@ -35,7 +35,7 @@ export default function ServicesPage() {
       {/* ══════════════ HERO ══════════════ */}
       <section
         data-dark-hero
-        className="relative flex h-[100svh] min-h-[600px] w-full flex-col justify-end overflow-hidden"
+        className="relative flex h-[68svh] min-h-[420px] w-full flex-col justify-end overflow-hidden md:h-[100svh] md:min-h-[600px]"
       >
         <video
           autoPlay
@@ -50,9 +50,9 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/20 to-ink/90" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/10 to-transparent" />
 
-        <div className="shell relative pb-10 md:pb-14">
+        <div className="shell relative pb-8 md:pb-14">
           <Reveal>
-            <Eyebrow className="mb-6 text-accent-soft">Services</Eyebrow>
+            <Eyebrow className="mb-4 text-accent-soft md:mb-6">Services</Eyebrow>
           </Reveal>
 
           <Reveal variant="lines">

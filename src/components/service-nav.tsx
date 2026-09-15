@@ -40,13 +40,21 @@ export function ServiceNav({ items }: { items: { id: string; label: string }[] }
 
   return (
     <div className="sticky top-20 z-30 border-y border-line bg-paper/85 backdrop-blur-xl md:top-24">
-      <nav className="shell flex gap-2 overflow-x-auto py-4" aria-label="Services">
+      {/* Not .shell: inside the page gutter the rail clipped its last chip
+          against the padding edge and showed a scrollbar under the row. It
+          carries the gutter as its own padding instead, so the row scrolls
+          from screen edge to screen edge and the final chip can clear the
+          right-hand side. */}
+      <nav
+        className="no-scrollbar mx-auto flex w-full max-w-[88rem] snap-x gap-2 overflow-x-auto px-6 py-3 md:px-10 md:py-4 xl:px-16"
+        aria-label="Services"
+      >
         {items.map((item) => (
           <a
             key={item.id}
             href={`#${item.id}`}
             aria-current={active === item.id ? "true" : undefined}
-            className={`tap chip label shrink-0 transition-colors duration-300 ${
+            className={`tap chip label shrink-0 snap-start transition-colors duration-300 ${
               active === item.id
                 ? "border-ink bg-ink text-paper"
                 : "text-muted hover:border-ink hover:text-ink"

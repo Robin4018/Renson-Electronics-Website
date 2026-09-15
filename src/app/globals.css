@@ -417,3 +417,15 @@
     background: transparent;
   }
 }
+
+/* Suppresses the bar on a deliberate horizontal rail. The row still scrolls
+   by touch, wheel and keyboard — only the bar is hidden, because a permanent
+   one under a row of chips reads as a broken edge rather than as an
+   invitation to scroll. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
