@@ -174,27 +174,29 @@ export default function HomePage() {
       {/* ══════════════ STATS ══════════════ */}
       <section className="border-y border-line bg-paper-dim">
         <div className="shell">
-          {/* Reflowing five stats into rows on a phone broke the row of ruled
-              columns that carries the whole idea — and left the fifth stat
-              orphaned. Below lg the row is kept intact and scrolled sideways
-              instead, one stat snapping into place at a time, so the reading
-              is the same as on a desktop. From lg up all five fit and it is a
-              plain grid again. */}
-          <dl className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto lg:grid lg:grid-cols-5 lg:overflow-x-visible">
+          {/* All five stay on screen at once on a phone, stacked rather than
+              scrolled: five ruled columns cannot be read at 380px, and a
+              sideways scroller hid four of the five behind a gesture. Each
+              stat becomes one ruled row — figure in a fixed left column so
+              every figure starts on the same edge, wording to its right. The
+              five-column row returns at lg, where it fits. */}
+          <dl className="lg:grid lg:grid-cols-5">
             {stats.map((stat, i) => (
               <Reveal
                 key={stat.label}
                 delay={i * 70}
-                className="hairline flex w-[58vw] shrink-0 snap-start flex-col border-r border-line py-7 pr-6 last:border-r-0 sm:w-[40vw] md:w-[30vw] lg:w-auto lg:py-10 lg:pr-10 lg:pl-10 lg:first:pl-0 lg:last:pr-0"
+                className="hairline grid grid-cols-[4.75rem_minmax(0,1fr)] items-baseline gap-x-5 py-4 sm:grid-cols-[6rem_minmax(0,1fr)] lg:flex lg:flex-col lg:border-r lg:border-line lg:py-10 lg:pr-10 lg:pl-10 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
               >
                 <dt className="sr-only">{stat.label}</dt>
-                <dd className="display-md font-display text-ink">
+                <dd className="display-md font-display text-ink max-lg:text-[1.5rem]">
                   <Counter to={stat.value} suffix={stat.suffix} />
                 </dd>
-                <p className="mt-5 max-w-[18ch] flex-1 text-sm leading-snug text-ink/70">
+                <p className="col-start-2 max-w-[24ch] text-sm leading-snug text-ink/70 lg:col-start-auto lg:mt-5 lg:max-w-[18ch] lg:flex-1">
                   {stat.label}
                 </p>
-                <p className="label mt-3 text-muted">{stat.unit}</p>
+                <p className="label col-start-2 mt-1 text-muted lg:col-start-auto lg:mt-3">
+                  {stat.unit}
+                </p>
               </Reveal>
             ))}
           </dl>

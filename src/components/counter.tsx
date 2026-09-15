@@ -31,7 +31,12 @@ export function Counter({
 
         const start = performance.now();
         const tick = (now: number) => {
-          const t = Math.min((now - start) / duration, 1);
+          // Clamped at the low end as well: the first rAF callback can carry a
+          // timestamp from just before `start` was taken, and a negative t in
+          // easeOutExpo flips the sign of the whole curve — the counter paints
+          // a negative figure for a frame. Imperceptible at 60fps, plainly
+          // visible once frames are throttled.
+          const t = Math.min(Math.max((now - start) / duration, 0), 1);
           // easeOutExpo
           const eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
           setValue(Math.round(eased * to));

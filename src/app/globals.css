@@ -417,14 +417,3 @@
     background: transparent;
   }
 }
-
-/* Hides the scrollbar on a deliberate horizontal scroller. The row still
-   scrolls by touch, wheel and keyboard; only the bar is suppressed, because
-   a permanent bar under a ruled row of figures reads as a broken edge. */
-.no-scrollbar {
-  scrollbar-width: none;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
