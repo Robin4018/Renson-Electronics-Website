@@ -504,10 +504,10 @@ export default function HomePage() {
               className="flex flex-col justify-between rounded-[10px] border border-ink-line p-8 md:p-10"
             >
               <div>
-                <span className="chip label border-ink-line text-accent-soft">
-                  PDF — {brochure.size}
-                </span>
-                <h3 className="display-md mt-8">{brochure.title}</h3>
+                {/* Mirrors the "Compliance" label opposite, so both cards open
+                    on the same baseline and share one internal rhythm. */}
+                <p className="label text-muted-dim">Company brochure</p>
+                <h3 className="display-md mt-6">{brochure.title}</h3>
                 <p className="mt-4 max-w-md text-sm leading-relaxed text-paper/65">
                   {brochure.description}
                 </p>
