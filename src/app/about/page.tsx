@@ -129,7 +129,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════ 02 — LEADERSHIP ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y">
+      <section className="border-t border-line bg-paper-dim section-y band-filled">
         <div className="shell">
           <SectionHeading
             eyebrow="Leadership"
@@ -246,7 +246,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════ 04 — FACILITIES ══════════════ */}
-      <section className="bg-ink text-paper section-y">
+      <section className="bg-ink text-paper section-y band-filled">
         <div className="shell">
           <SectionHeading
             eyebrow="Facilities"

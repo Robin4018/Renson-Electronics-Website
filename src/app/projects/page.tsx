@@ -143,7 +143,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* ══════════════ 02 — GALLERY ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y">
+      <section className="border-t border-line bg-paper-dim section-y band-filled">
         <div className="shell">
           <SectionHeading
             eyebrow="On the floor"

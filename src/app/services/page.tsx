@@ -239,7 +239,7 @@ export default function ServicesPage() {
       {/* ══════════════ VOLTAGE STABILIZERS ══════════════ */}
       <section
         id="voltage-stabilizers"
-        className="border-t border-line bg-paper-dim section-y scroll-mt-40"
+        className="border-t border-line bg-paper-dim section-y band-filled scroll-mt-40"
       >
         <div className="shell">
           <SectionHeading
@@ -324,7 +324,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ══════════════ BATTERY CHARGERS ══════════════ */}
-      <section id="battery-chargers" className="bg-ink text-paper section-y scroll-mt-40">
+      <section id="battery-chargers" className="bg-ink text-paper section-y band-filled scroll-mt-40">
         <div className="shell">
           <SectionHeading
             eyebrow="Battery charging"

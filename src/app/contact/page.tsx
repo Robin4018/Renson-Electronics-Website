@@ -125,7 +125,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════════ 02 — MAPS ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y">
+      <section className="border-t border-line bg-paper-dim section-y band-filled">
         <div className="shell">
           <SectionHeading
             eyebrow="Facility map"
@@ -176,7 +176,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════════ CTA ══════════════ */}
-      <section className="bg-ink text-paper section-y">
+      <section className="bg-ink text-paper section-y band-filled">
         <div className="shell">
           <div className="grid grid-cols-1 items-end gap-x-8 gap-y-10 md:grid-cols-12">
             <div className="md:col-span-7">

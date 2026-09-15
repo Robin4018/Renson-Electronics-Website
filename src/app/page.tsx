@@ -192,7 +192,7 @@ export default function HomePage() {
 
 
       {/* ══════════════ 02 — CAPABILITIES ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y">
+      <section className="border-t border-line bg-paper-dim section-y band-filled">
         <div className="shell">
           <SectionHeading
             eyebrow="Core capabilities"
@@ -308,7 +308,7 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ 04 — FACILITIES ══════════════ */}
-      <section className="bg-ink text-paper section-y">
+      <section className="bg-ink text-paper section-y band-filled">
         <div className="shell">
           <SectionHeading
             eyebrow="Infrastructure"
@@ -442,7 +442,7 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ 06 — WHY RENSON ══════════════ */}
-      <section className="border-t border-line bg-paper-dim section-y">
+      <section className="border-t border-line bg-paper-dim section-y band-filled">
         <div className="shell">
           <SectionHeading
             eyebrow="Why Renson"
@@ -469,7 +469,7 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ 07 — REGISTER & CERTIFICATE ══════════════ */}
-      <section className="border-t border-ink-line bg-ink text-paper section-y">
+      <section className="border-t border-ink-line bg-ink text-paper section-y band-filled">
         <div className="shell">
           <SectionHeading
             eyebrow="Documentation"
