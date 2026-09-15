@@ -561,21 +561,19 @@ export default function HomePage() {
 
                 <div className="mt-10 flex flex-wrap gap-3">
                   <a
-                    href={`https://wa.me/${company.whatsapp}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`tel:${company.phoneHref}`}
                     className="btn label group border border-paper bg-paper text-ink hover:bg-transparent hover:text-paper"
                   >
-                    WhatsApp us
+                    Call us
                     <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
                       →
                     </span>
                   </a>
                   <a
-                    href={`tel:${company.phoneHref}`}
+                    href={`mailto:${company.email}`}
                     className="btn label border border-ink-line text-paper hover:border-paper"
                   >
-                    Call us
+                    Email us
                   </a>
                 </div>
               </Reveal>
