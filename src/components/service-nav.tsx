@@ -46,7 +46,7 @@ export function ServiceNav({ items }: { items: { id: string; label: string }[] }
             key={item.id}
             href={`#${item.id}`}
             aria-current={active === item.id ? "true" : undefined}
-            className={`chip label shrink-0 transition-colors duration-300 ${
+            className={`tap chip label shrink-0 transition-colors duration-300 ${
               active === item.id
                 ? "border-ink bg-ink text-paper"
                 : "text-muted hover:border-ink hover:text-ink"

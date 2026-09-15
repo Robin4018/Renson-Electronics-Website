@@ -150,13 +150,15 @@ export default function ServicesPage() {
               key={item.step}
               as="li"
               delay={(i % 5) * 70}
-              className="flex flex-col bg-paper px-6 py-8 transition-colors duration-500 hover:bg-paper-dim"
+              className="grid grid-cols-[1.75rem_minmax(0,1fr)] items-baseline gap-x-3 bg-paper px-5 py-5 transition-colors duration-500 hover:bg-paper-dim sm:flex sm:flex-col sm:px-6 sm:py-8"
             >
               <span className="label text-accent">{item.step}</span>
-              <h4 className="mt-7 text-base leading-snug font-medium tracking-tight lg:min-h-[3em]">
+              <h4 className="col-start-2 text-base leading-snug font-medium tracking-tight sm:col-start-auto sm:mt-7 lg:min-h-[3em]">
                 {item.name}
               </h4>
-              <p className="mt-3 text-sm leading-relaxed text-ink/60">{item.detail}</p>
+              <p className="col-start-2 mt-1.5 text-sm leading-snug text-ink/60 sm:col-start-auto sm:mt-3 sm:leading-relaxed">
+                {item.detail}
+              </p>
             </Reveal>
           ))}
         </ol>
@@ -167,30 +169,28 @@ export default function ServicesPage() {
           <h3 className="display-md mt-5">Scaling for all requirements</h3>
         </Reveal>
 
-        <div className="mt-12 grid border-t border-line md:grid-cols-2">
+        <div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-0 md:border-t md:border-line">
           {units.map((unit, i) => (
             <Reveal
               key={unit.tag}
               delay={i * 110}
-              className={`py-10 md:py-12 ${
-                i === 0
-                  ? "border-b border-line md:border-b-0 md:pr-12"
-                  : "md:border-l md:border-line md:pl-12"
+              className={`max-md:rounded-[10px] max-md:border max-md:border-line max-md:p-6 md:py-12 ${
+                i === 0 ? "md:pr-12" : "md:border-l md:border-line md:pl-12"
               }`}
             >
               <div className="flex items-center justify-between gap-4">
                 <span className="chip label text-accent">{unit.tag}</span>
                 <span className="label text-muted">{unit.scope}</span>
               </div>
-              <h4 className="display-md mt-8">{unit.name}</h4>
-              <dl className="mt-9">
+              <h4 className="display-md mt-6 md:mt-8">{unit.name}</h4>
+              <dl className="mt-6 md:mt-9">
                 {unit.rows.map(([key, value]) => (
                   <div
                     key={key}
-                    className="flex items-baseline justify-between gap-6 border-b border-line py-4 first:border-t"
+                    className="flex flex-col gap-1 border-b border-line py-3 first:border-t md:flex-row md:items-baseline md:justify-between md:gap-6 md:py-4"
                   >
                     <dt className="label text-muted">{key}</dt>
-                    <dd className="text-right text-sm font-medium tracking-tight">{value}</dd>
+                    <dd className="text-sm font-medium tracking-tight md:text-right">{value}</dd>
                   </div>
                 ))}
               </dl>
@@ -199,7 +199,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Components + finishes */}
-        <div className="mt-20 grid grid-cols-1 gap-x-8 gap-y-12 md:mt-28 md:grid-cols-12">
+        <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 md:mt-28 md:gap-y-12 md:grid-cols-12">
           <div className="md:col-span-6">
             <Reveal>
               <Eyebrow className="text-accent">Versatility</Eyebrow>
@@ -250,9 +250,9 @@ export default function ServicesPage() {
 
           <Reveal delay={120} className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-14 sm:grid-cols-2 lg:grid-cols-4">
             {stabilizerSpecs.map((spec) => (
-              <div key={spec.label} className="bg-paper-dim px-7 py-9">
+              <div key={spec.label} className="bg-paper-dim px-5 py-6 md:px-7 md:py-9">
                 <p className="label text-muted">{spec.label}</p>
-                <p className="mt-4 font-display text-2xl tracking-tight md:text-3xl">
+                <p className="mt-2 font-display text-2xl tracking-tight md:mt-4 md:text-3xl">
                   {spec.value}
                 </p>
               </div>
@@ -352,17 +352,17 @@ export default function ServicesPage() {
               <Reveal
                 key={feature.index}
                 delay={(i % 3) * 90}
-                className="bg-ink px-7 py-10 md:px-8"
+                className="bg-ink px-5 py-6 md:px-8 md:py-10"
               >
                 <span className="label text-accent-soft">{feature.index}</span>
-                <p className="label mt-8 text-muted-dim">{feature.kicker}</p>
+                <p className="label mt-4 text-muted-dim md:mt-8">{feature.kicker}</p>
                 <h3 className="mt-3 text-xl font-medium tracking-tight">{feature.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-paper/60">{feature.detail}</p>
+                <p className="mt-3 text-sm leading-relaxed text-paper/60 md:mt-4">{feature.detail}</p>
               </Reveal>
             ))}
           </div>
 
-          <Reveal delay={200} className="mt-16 flex flex-wrap items-center gap-3">
+          <Reveal delay={200} className="mt-10 flex flex-wrap items-center gap-3 md:mt-16">
             <Link
               href="/contact"
               className="btn label group border border-paper bg-paper text-ink hover:bg-transparent hover:text-paper"

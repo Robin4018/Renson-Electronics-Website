@@ -214,13 +214,13 @@ export function SiteHeader() {
             <p className="label mb-4 text-muted-dim">Get in touch</p>
             <a
               href={`tel:${company.phoneHref}`}
-              className="block text-xl tracking-tight text-paper"
+              className="tap block text-xl tracking-tight text-paper"
             >
               {company.phone}
             </a>
             <a
               href={`mailto:${company.email}`}
-              className="mt-1 block text-sm text-muted-dim"
+              className="tap mt-1 block text-sm text-muted-dim"
             >
               {company.email}
             </a>
