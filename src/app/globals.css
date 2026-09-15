@@ -166,20 +166,26 @@
     }
   }
 
-  /* Vertical rhythm — every band uses the same scale. */
+  /* Vertical rhythm — every band uses the same scale. Top padding runs
+     lighter than bottom since two adjacent sections each contribute their
+     own edge, and a full symmetric gap on both sides reads as a dead zone
+     at the seam. */
   .section-y {
-    padding-block: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
   }
 
   @media (min-width: 768px) {
     .section-y {
-      padding-block: 7rem;
+      padding-top: 4rem;
+      padding-bottom: 5rem;
     }
   }
 
   @media (min-width: 1280px) {
     .section-y {
-      padding-block: 9rem;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
     }
   }
 
@@ -193,6 +199,9 @@
 
   /* Pill controls share one geometry so they always line up. */
   .btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -202,6 +211,36 @@
       background-color 0.35s ease,
       border-color 0.35s ease,
       color 0.35s ease;
+  }
+
+  /* Hover: the fill wipes in from the left and the arrow steps forward while
+     the label holds still. Each variant names its own ink through --btn-fill;
+     without one the wipe is transparent and the button just changes colour.
+     The transform lives on ::before and on the arrow — never on .btn itself,
+     which is already carrying its own reveal transform in the header. */
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--btn-fill, transparent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.55s var(--ease-out-expo);
+  }
+
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    transform: scaleX(1);
+  }
+
+  .btn .btn-arrow {
+    transition: transform 0.45s var(--ease-out-expo);
+  }
+
+  .btn:hover .btn-arrow,
+  .btn:focus-visible .btn-arrow {
+    transform: translateX(0.3rem);
   }
 
   .chip {
@@ -286,28 +325,6 @@
   }
 }
 
-/* ── Marquee ───────────────────────────────────────────── */
-@keyframes marquee-x {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-x 46s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
-}
-
 /* ── Scrollbar ─────────────────────────────────────────── */
 @media (pointer: fine) {
   ::-webkit-scrollbar {
@@ -322,5 +339,56 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-ink);
+  }
+}
+
+/* ── Protected artwork ─────────────────────────────────────
+   The Renson lockup is restricted company property. Block the
+   browser affordances that hand the file straight to a visitor:
+   drag-to-desktop, long-press save on iOS, and text selection.
+   The image also takes no pointer events, so a right-click lands
+   on the shield overlay instead — no "Save image as" or "Open
+   image in new tab" entry appears in the menu. */
+.artwork-protected {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+}
+
+/* A link wrapping protected artwork must not be draggable either —
+   otherwise the browser offers its own link ghost (the URL chip)
+   even though the image inside refuses to drag. */
+.artwork-protected-link {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Map embeds ────────────────────────────────────────────
+   Google's own palette is cool blue-grey and fights the bone
+   paper everywhere around it. Desaturate and warm the frame so
+   it reads as part of the page, then hand the real colours back
+   on hover — which also signals the map is live, not a picture.
+   The attribution footer Google requires stays visible in both
+   states; only the colour is touched. */
+.map-embed {
+  /* Partial desaturation, not grayscale(1): a full greyscale pass flattens the
+     red location pin into the roads and it disappears. Holding a little
+     saturation keeps the pin and the attribution strip readable while the
+     surrounding blue-grey still calms into the paper palette. */
+  filter: saturate(0.32) sepia(0.26) contrast(0.95) brightness(1.03);
+  transition: filter 0.7s var(--ease-out-expo);
+}
+
+.group:hover .map-embed {
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-embed {
+    transition: none;
   }
 }

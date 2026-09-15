@@ -9,7 +9,7 @@ import {
   company,
   timeline,
   leadership,
-  testimonials,
+  ceoMessage,
   divisions,
   principles,
   units,
@@ -30,9 +30,9 @@ export default function AboutPage() {
         lines={["Legacy of", "excellence."]}
         intro="Four decades of engineering precision and industrial trust in Coimbatore — built by engineers, sustained by the clients who keep coming back."
         band={{
-          src: "/images/plant-exterior.jpg",
-          alt: "Industrial facility exterior",
-          caption: "Industrial manufacturing infrastructure",
+          src: "/images/facility-exterior.jpg",
+          alt: "Renson Electronics facility exterior",
+          caption: "Renson Electronics manufacturing facility",
         }}
       />
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
               >
                 <Image
                   src="/images/workshop.jpg"
-                  alt="Fabrication and finishing floor"
+                  alt="Curing oven and loading racks at Unit II"
                   fill
                   sizes="(min-width: 768px) 40vw, 100vw"
                   className="object-cover"
@@ -141,8 +141,14 @@ export default function AboutPage() {
             {leadership.map((person, i) => (
               <Reveal key={person.name} delay={i * 110} className="bg-paper-dim p-8 md:p-10">
                 <div className="flex items-start gap-5">
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-ink/15 font-display text-lg tracking-tight text-ink/70">
-                    {person.initials}
+                  <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-ink/15">
+                    <Image
+                      src={person.photo}
+                      alt={person.name}
+                      fill
+                      sizes="64px"
+                      className="object-cover object-top"
+                    />
                   </span>
                   <div>
                     <h3 className="display-md">
@@ -201,34 +207,40 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══════════════ 03 — TESTIMONIALS ══════════════ */}
+      {/* ══════════════ 03 — CEO SPOTLIGHT ══════════════ */}
       <section className="border-t border-line section-y">
         <div className="shell">
-          <SectionHeading eyebrow="03 — Testimonials" lines={["From the people", "who work here."]} />
+          <SectionHeading eyebrow="03 — Leadership" lines={["A word from", "our CEO."]} />
 
-          <div className="mt-14 flex flex-col gap-16 md:mt-20">
-            {testimonials.map((person, i) => (
-              <Reveal
-                key={person.name}
-                delay={i * 110}
-                className="mx-auto max-w-2xl text-center"
+          <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 md:mt-20 md:grid-cols-12 md:items-center">
+            <Reveal
+              variant="clip"
+              className="frame relative aspect-[4/5] w-full max-w-sm md:col-span-4"
+            >
+              <Image
+                src={ceoMessage.photo}
+                alt={ceoMessage.name}
+                fill
+                sizes="(min-width: 768px) 30vw, 100vw"
+                className="object-cover"
+              />
+            </Reveal>
+
+            <Reveal delay={140} className="md:col-span-7 md:col-start-6">
+              <span
+                aria-hidden="true"
+                className="font-display block text-7xl leading-none text-accent/25 md:text-8xl"
               >
-                <div className="mx-auto h-24 w-24 overflow-hidden rounded-full md:h-28 md:w-28">
-                  <Image
-                    src={person.photo}
-                    alt={person.name}
-                    width={112}
-                    height={112}
-                    className="h-full w-full object-cover object-[center_20%]"
-                  />
-                </div>
-                <p className="font-display mt-8 text-2xl leading-snug font-medium tracking-tight text-ink md:text-3xl">
-                  &ldquo;{person.quote}&rdquo;
-                </p>
-                <p className="label mt-8 text-accent">{person.name}</p>
-                <p className="label mt-1 text-muted">{person.role}</p>
-              </Reveal>
-            ))}
+                &ldquo;
+              </span>
+              <p className="font-display -mt-6 text-2xl leading-snug font-medium tracking-tight text-ink md:text-3xl">
+                {ceoMessage.quote}
+              </p>
+              <div className="mt-9 border-t border-line pt-6">
+                <p className="label text-accent">{ceoMessage.name}</p>
+                <p className="label mt-1 text-muted">{ceoMessage.role}</p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

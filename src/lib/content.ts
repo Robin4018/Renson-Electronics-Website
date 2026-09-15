@@ -33,8 +33,8 @@ export const heroSlides = [
 export const nav = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -55,7 +55,7 @@ export const capabilities = [
     description:
       "Industrial-grade electrostatic powder coating for MS cabinets, panel boards, aluminium motor bodies, textile frames and motor castings. A 7-tank pre-treatment ensures superior adhesion and corrosion resistance.",
     specs: ["MS Cabinets", "Motor Bodies", "Panel Boards", "Textile Frames"],
-    image: "/images/powder-coating.jpg",
+    image: "/images/powder-coating-booth.jpg",
     href: "/services#powder-coating",
   },
   {
@@ -66,7 +66,7 @@ export const capabilities = [
     description:
       "Single-phase and three-phase voltage stabilizers ranging from 0.2 KVA to 10 KVA, engineered to operate across a wide input range of 140V to 270V. Monthly production capacity of up to 250 units.",
     specs: ["0.2 – 10 KVA", "140V – 270V Input", "Single & 3 Phase", "In-house Testing"],
-    image: "/images/voltage-stabilizers.jpg",
+    image: "/images/voltage-stabilizer-side.jpg",
     href: "/services#voltage-stabilizers",
   },
   {
@@ -77,7 +77,7 @@ export const capabilities = [
     description:
       "Precision-manufactured battery chargers backed by a dedicated after-sales service team. Consistent quality, reliable performance and responsive support — around 100 units produced every month.",
     specs: ["100 Units / Month", "Custom Orders", "Tested Quality", "After-Sales Support"],
-    image: "/images/battery-chargers.jpg",
+    image: "/images/battery-charger-side.jpg",
     href: "/services#battery-chargers",
   },
 ];
@@ -121,9 +121,13 @@ export const units = [
       "40 KVA generator backup",
       "Near Electronic Industrial Estate",
     ],
-    map: "https://maps.google.com/?q=Renson+Electronics+Kalapatti+Road+Nehru+Nagar+West+Coimbatore",
+    map: "https://maps.app.goo.gl/aSx8v3pvc7Fh9HXQA",
+    // Named-place embed, not the bare coordinate form: the coordinate embed
+    // renders without Google's "Map data ©" strip, which the Maps terms
+    // require us to display, and its pin is unlabelled. The place card this
+    // form draws is cropped off in the contact page instead.
     embed:
-      "https://www.google.com/maps?q=Nehru+Nagar+West,+Kalapatti+Road,+Coimbatore+641014&output=embed",
+      "https://www.google.com/maps?q=Rensan+Electronics,+Kalapatti,+Coimbatore&output=embed",
   },
   {
     tag: "Unit II",
@@ -150,9 +154,9 @@ export const units = [
       "Dedicated storage & logistics",
       "Near COINDIA Foundry Division",
     ],
-    map: "https://maps.google.com/?q=Serayampalayam+Vellanapatti+Coimbatore+641048",
+    map: "https://maps.app.goo.gl/BBjvUSWr2p6aAHg77",
     embed:
-      "https://www.google.com/maps?q=Serayampalayam,+Vellanapatti,+Coimbatore+641048&output=embed",
+      "https://www.google.com/maps?q=Renson+Electronics+%26+Powder+Coating,+Vellanapatti,+Coimbatore&output=embed",
   },
 ];
 
@@ -204,7 +208,7 @@ export const timeline = [
 
 export const leadership = [
   {
-    initials: "JS",
+    photo: "/images/Team/sundarsingh.jpg",
     name: "J. Sunder Singh",
     suffix: "(Late)",
     role: "Founder",
@@ -213,12 +217,12 @@ export const leadership = [
     bio: "A distinguished Chartered Civil Engineer and member of the Institution of Engineers (India), remembered for his invaluable contributions to infrastructure planning and project management, and for driving operational excellence across the company.",
     credentials: [
       "Chartered Civil Engineer",
-      "Member — Institution of Engineers (India)",
+      "Member - Institution of Engineers (India)",
       "Former Civil Manager, PSG Institutions",
     ],
   },
   {
-    initials: "AD",
+    photo: "/images/Team/allwin.jpg",
     name: "S. Allwin Daniel",
     suffix: "",
     role: "Proprietor",
@@ -229,15 +233,13 @@ export const leadership = [
   },
 ];
 
-export const testimonials = [
-  {
-    name: "Renita Katherine",
-    role: "Manager",
-    photo: "/images/Team/renita.jpg",
-    quote:
-      "What stands out to me is that quality here isn't assumed — it's checked. Every order is measured and signed off before dispatch, whether it's a single panel board or a fifteen-foot fabrication, and that consistency is what keeps our clients coming back year after year.",
-  },
-];
+export const ceoMessage = {
+  name: "Renita Katherine",
+  role: "CEO, Renson Electronics",
+  photo: "/images/Team/renita.jpg",
+  quote:
+    "Every panel we ship carries four decades of reputation with it. My role is simple - protect that standard as we grow, so the next order is judged exactly the same way the first one was, on whether it lasts.",
+};
 
 export const divisions = [
   {
@@ -341,7 +343,7 @@ export const projects = [
     title: "Industrial Powder Coating",
     detail:
       "Precision electrostatic powder coating for panel boards and industrial components, ensuring superior corrosion resistance and a finish specified to the client's exact shade.",
-    image: "/images/powder-coating.jpg",
+    image: "/images/powder-coating-process.jpg",
     facts: [
       ["Substrates", "MS, aluminium, sheet metal"],
       ["Pre-treatment", "5-tank & 7-tank"],
@@ -356,7 +358,7 @@ export const projects = [
     title: "Voltage Stabilizers",
     detail:
       "High-performance voltage regulation systems built for industrial applications, protecting sensitive equipment from the power fluctuations common across the region.",
-    image: "/images/voltage-stabilizers.jpg",
+    image: "/images/voltage-stabilizer-alt.jpg",
     facts: [
       ["Range", "0.2 – 10 KVA"],
       ["Input window", "140V – 270V"],
@@ -371,7 +373,7 @@ export const projects = [
     title: "Advanced Battery Chargers",
     detail:
       "Intelligent charging solutions for industrial batteries, designed for durability and optimal performance in demanding environments, and tested before every dispatch.",
-    image: "/images/battery-chargers.jpg",
+    image: "/images/battery-charger-angle.jpg",
     facts: [
       ["Output", "100 units / month"],
       ["Testing", "100% pre-dispatch"],
@@ -393,11 +395,19 @@ export const sectors = [
   "General engineering",
 ];
 
+export const brochure = {
+  title: "Powering industries across Tamil Nadu.",
+  description:
+    "A complete overview of our powder coating and electronics divisions — capabilities, equipment, certifications and facility specifications in one document.",
+  file: "/documents/renson-electronics-brochure.pdf",
+  size: "0.6 MB",
+};
+
 export const gallery = [
-  { src: "/images/finishes.jpg", caption: "Colour range — any RAL shade on request", span: "md:col-span-7" },
-  { src: "/images/machined-parts.jpg", caption: "Machined components staged for coating", span: "md:col-span-5" },
-  { src: "/images/coil-rings.jpg", caption: "Coil assemblies, electronic division", span: "md:col-span-5" },
-  { src: "/images/workshop.jpg", caption: "Fabrication and finishing floor", span: "md:col-span-7" },
+  { src: "/images/coated-motor-body.jpg", caption: "Coated motor bodies — any RAL shade on request", span: "md:col-span-7" },
+  { src: "/images/parts-staged.jpg", caption: "Aluminium motor bodies staged for coating", span: "md:col-span-5" },
+  { src: "/images/panel-board-installed.jpg", caption: "Panel board, wired and commissioned", span: "md:col-span-5" },
+  { src: "/images/dispatch-loading.jpg", caption: "Finished enclosures loaded for dispatch", span: "md:col-span-7" },
 ];
 
 /* ── Contact ──────────────────────────────────────────────── */

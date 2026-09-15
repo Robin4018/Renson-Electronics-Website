@@ -1,0 +1,8 @@
+# Raw source footage — not part of the deployed site
+/Renson elec footages/
+
+# Loose working-copy videos in the repo root (the site uses /public/videos/*)
+/*.mp4
+
+# Local scratch (screenshots, dev logs)
+/scratch

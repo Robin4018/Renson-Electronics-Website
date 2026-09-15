@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { nav, company } from "@/lib/content";
 import { Logo } from "./logo";
 
@@ -11,6 +11,27 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [overDark, setOverDark] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // The header CTA points at /contact, so it is dead weight on that page.
+  const onContact = pathname.startsWith("/contact");
+  const showEnquire = scrolled && !onContact;
+
+  // Everywhere else the logo is an ordinary link home and Next scrolls to the
+  // top for us. On the home page the route never changes, so the click is a
+  // no-op and the visitor stays where they scrolled to — take it over and ride
+  // back up by hand. Modified clicks are left alone so "open in new tab" works.
+  const returnToTop = (e: MouseEvent<HTMLAnchorElement>) => {
+    setOpen(false);
+    if (pathname !== "/") return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
+  };
 
   // A page may open with a full-bleed dark hero (marked data-dark-hero). While
   // the header sits over it, it stays transparent and inverts to light type.
@@ -62,7 +83,13 @@ export function SiteHeader() {
         }`}
       >
         <div className="shell flex h-20 items-center justify-between gap-6 md:h-24">
-          <Link href="/" aria-label={`${company.name} — home`} className="shrink-0">
+          <Link
+            href="/"
+            aria-label={`${company.name} — home`}
+            draggable={false}
+            onClick={returnToTop}
+            className="artwork-protected-link shrink-0"
+          >
             <Logo
               tone={open || overDark ? "light" : "dark"}
               height={30}
@@ -102,22 +129,28 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
+            {/* On /contact the button would only point at the page you are
+                already reading, so it sits out entirely there. */}
             <Link
               href="/contact"
-              aria-hidden={!scrolled}
-              tabIndex={scrolled ? undefined : -1}
-              className={`btn label hidden py-3.5 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:inline-flex ${
-                scrolled
+              aria-hidden={!showEnquire}
+              tabIndex={showEnquire ? undefined : -1}
+              className={`btn label hidden py-3.5 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                onContact ? "sm:hidden" : "sm:inline-flex"
+              } ${
+                showEnquire
                   ? "translate-y-0 opacity-100"
                   : "pointer-events-none -translate-y-1 opacity-0"
               } ${
                 overDark
-                  ? "border border-paper text-paper hover:bg-paper hover:text-ink"
-                  : "border border-ink text-ink hover:bg-ink hover:text-paper"
+                  ? "border border-paper text-paper [--btn-fill:var(--color-paper)] hover:text-ink"
+                  : "border border-ink text-ink [--btn-fill:var(--color-ink)] hover:text-paper"
               }`}
             >
               Enquire
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true" className="btn-arrow">
+                →
+              </span>
             </Link>
 
             <button

@@ -42,3 +42,11 @@ next-env.d.ts
 
 # local scratch (screenshots, dev logs)
 /scratch
+
+.vercel
+
+# Raw source footage and loose working-copy videos in the repo root.
+# The site's own videos live in /public/videos and are tracked.
+# (Renson_Electronics_hero_video.mp4 predates this rule and stays tracked.)
+/Renson elec footages/
+/*.mp4

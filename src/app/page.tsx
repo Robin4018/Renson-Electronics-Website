@@ -15,6 +15,7 @@ import {
   units,
   differentiators,
   finishes,
+  brochure,
 } from "@/lib/content";
 
 export default function HomePage() {
@@ -98,8 +99,8 @@ export default function HomePage() {
         className="relative block h-[36vh] min-h-[240px] w-full md:h-[48vh]"
       >
         <Image
-          src="/images/facility.jpg"
-          alt="Production hall with press machinery and overhead gantry"
+          src="/images/assembly-floor.jpg"
+          alt="Coated motor bodies on the assembly floor"
           fill
           sizes="100vw"
           className="object-cover"
@@ -107,7 +108,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 via-40% to-transparent" />
         <div className="shell absolute inset-x-0 bottom-0 pb-7">
           <p className="label text-paper/85">
-            Production hall with press machinery and overhead gantry
+            Coated motor bodies on the assembly floor
           </p>
         </div>
       </Reveal>
@@ -168,12 +169,12 @@ export default function HomePage() {
       {/* ══════════════ STATS ══════════════ */}
       <section className="border-y border-line bg-paper-dim">
         <div className="shell">
-          <dl className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <dl className="grid grid-cols-2 gap-x-10 gap-y-10 md:grid-cols-3 md:gap-x-12 lg:grid-cols-5 lg:gap-x-0 lg:gap-y-0">
             {stats.map((stat, i) => (
               <Reveal
                 key={stat.label}
                 delay={i * 70}
-                className="hairline flex flex-col py-10 pr-6 md:py-12 lg:border-r lg:border-line lg:pr-8 lg:pl-8 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
+                className="hairline flex flex-col py-10 md:py-12 lg:border-r lg:border-line lg:pr-10 lg:pl-10 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
               >
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="display-md font-display text-ink">
@@ -182,7 +183,7 @@ export default function HomePage() {
                 <p className="mt-5 max-w-[18ch] flex-1 text-sm leading-snug text-ink/70">
                   {stat.label}
                 </p>
-                <p className="label mt-5 text-muted">{stat.unit}</p>
+                <p className="label mt-3 text-muted">{stat.unit}</p>
               </Reveal>
             ))}
           </dl>
@@ -322,8 +323,8 @@ export default function HomePage() {
             className="frame relative mt-14 block aspect-[16/9] w-full md:mt-20 md:aspect-[24/9]"
           >
             <Image
-              src="/images/hero-coating.jpg"
-              alt="Technician applying powder coating to a large metal frame inside a spray booth"
+              src="/images/coating-line.jpg"
+              alt="Components on the coating line, Unit II"
               fill
               sizes="100vw"
               className="object-cover"
@@ -331,7 +332,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 via-40% to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
               <p className="label text-paper/85">
-                Technician applying powder coating to a large metal frame inside a spray booth
+                Components on the coating line, Unit II
               </p>
             </div>
           </Reveal>
@@ -394,8 +395,8 @@ export default function HomePage() {
               className="frame relative block aspect-[4/3] w-full"
             >
               <Image
-                src="/images/finishes-fan.jpg"
-                alt="Fan of powder coating colour swatches"
+                src="/images/finish-colour-range.jpg"
+                alt="Cured components in a custom shade — any RAL colour on request"
                 fill
                 sizes="(min-width: 768px) 46vw, 100vw"
                 className="object-cover"
@@ -403,7 +404,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 via-40% to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                 <p className="label text-paper/85">
-                  Fan of powder coating colour swatches
+                  Cured components in a custom shade — any RAL colour on request
                 </p>
               </div>
             </Reveal>
@@ -467,10 +468,73 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══════════════ 07 — REGISTER & CERTIFICATE ══════════════ */}
+      <section className="border-t border-ink-line bg-ink text-paper section-y">
+        <div className="shell">
+          <SectionHeading
+            eyebrow="07 — Documentation"
+            lines={["Registered, certified.", "Ready to ship."]}
+            intro="An MSME, GST and UDYAM registered proprietary firm, trusted by industries across Tamil Nadu since 1986."
+            tone="light"
+          />
+
+          <div className="mt-14 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-2">
+            <Reveal className="flex flex-col rounded-[10px] border border-ink-line p-8 md:p-10">
+              <p className="label text-muted-dim">Compliance</p>
+              <dl className="mt-6 flex flex-1 flex-col justify-between">
+                {[
+                  ["GST No.", company.gst],
+                  ["UDYAM No.", company.udyam],
+                  ["Constitution", company.constitution],
+                  ["Established", `${company.since}, ${company.location}`],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className="hairline-dark flex items-baseline justify-between gap-6 py-4 first:border-t-0 first:pt-0"
+                  >
+                    <dt className="text-sm text-paper/65">{label}</dt>
+                    <dd className="text-sm font-medium tracking-tight">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
+
+            <Reveal
+              delay={120}
+              className="flex flex-col justify-between rounded-[10px] border border-ink-line p-8 md:p-10"
+            >
+              <div>
+                <span className="chip label border-ink-line text-accent-soft">
+                  PDF — {brochure.size}
+                </span>
+                <h3 className="display-md mt-8">{brochure.title}</h3>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-paper/65">
+                  {brochure.description}
+                </p>
+              </div>
+
+              <div className="mt-10">
+                <a
+                  href={brochure.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn label group border border-paper bg-paper text-ink hover:bg-transparent hover:text-paper"
+                >
+                  View brochure
+                  <span className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
+                    ↗
+                  </span>
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ══════════════ CTA ══════════════ */}
       <section className="relative overflow-hidden bg-ink text-paper">
         <Image
-          src="/images/sparks.jpg"
+          src="/images/cta-castings.jpg"
           alt=""
           fill
           sizes="100vw"
@@ -511,7 +575,7 @@ export default function HomePage() {
                     href={`tel:${company.phoneHref}`}
                     className="btn label border border-ink-line text-paper hover:border-paper"
                   >
-                    {company.phone}
+                    Call us
                   </a>
                 </div>
               </Reveal>

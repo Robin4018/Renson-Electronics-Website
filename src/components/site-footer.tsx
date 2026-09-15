@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { company, nav, units } from "@/lib/content";
 import { Logo } from "./logo";
-import { Marquee } from "./marquee";
 
 const serviceLinks = [
   { label: "Powder Coating", href: "/services#powder-coating" },
@@ -12,17 +11,6 @@ const serviceLinks = [
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-paper">
-      <Marquee
-        items={[
-          "Powder Coating",
-          "Voltage Stabilizers",
-          "Battery Chargers",
-          "MSME Registered",
-          "Coimbatore, Tamil Nadu",
-          "Since 1986",
-        ]}
-      />
-
       <div className="shell">
         <div className="hairline-dark grid grid-cols-2 gap-x-8 gap-y-14 py-16 md:py-20 lg:grid-cols-12">
           <div className="col-span-2 lg:col-span-4">

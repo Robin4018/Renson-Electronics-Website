@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { Eyebrow } from "@/components/eyebrow";
 import { BigLink } from "@/components/big-link";
-import { Reveal } from "@/components/reveal";
+import { Reveal, MaskLine } from "@/components/reveal";
 import { Counter } from "@/components/counter";
 import { company, projects, sectors, gallery, stats } from "@/lib/content";
 
@@ -18,17 +17,57 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <>
-      <PageHero
-        eyebrow="C — Projects"
-        meta="Since 1986"
-        lines={["Excellence in", "execution."]}
-        intro="From large-scale industrial panel boards to precision-engineered voltage regulation systems, Renson Electronics delivers consistent quality across every batch."
-        band={{
-          src: "/images/band-parts.jpg",
-          alt: "Machined metal components staged for finishing",
-          caption: "Machined components staged for finishing",
-        }}
-      />
+      {/* ══════════════ HERO ══════════════ */}
+      <section
+        data-dark-hero
+        className="relative flex h-[100svh] min-h-[600px] w-full flex-col justify-end overflow-hidden"
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/projects-video-poster.jpg"
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/projects-hero.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/20 to-ink/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/10 to-transparent" />
+
+        <div className="shell relative pb-10 md:pb-14">
+          <Reveal>
+            <Eyebrow className="mb-6 text-accent-soft">C — Projects</Eyebrow>
+          </Reveal>
+
+          <Reveal variant="lines">
+            <h1 className="display-xl text-paper">
+              <MaskLine>Excellence in</MaskLine>
+              <MaskLine delay={110}>
+                <span className="text-paper/60">execution.</span>
+              </MaskLine>
+            </h1>
+          </Reveal>
+
+          <Reveal
+            delay={200}
+            className="mt-10 flex flex-wrap items-center justify-between gap-x-10 gap-y-6 border-t border-paper/25 pt-6"
+          >
+            <p className="label text-paper/75">Since 1986</p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ══════════════ INTRO ══════════════ */}
+      <section className="shell border-b border-line py-10 md:py-14">
+        <Reveal>
+          <p className="max-w-2xl text-base leading-relaxed text-ink/75 md:text-lg">
+            From large-scale industrial panel boards to precision-engineered
+            voltage regulation systems, Renson Electronics delivers
+            consistent quality across every batch.
+          </p>
+        </Reveal>
+      </section>
 
       {/* ══════════════ 01 — SELECTED WORK ══════════════ */}
       <section className="shell section-y">
@@ -128,14 +167,8 @@ export default function ProjectsPage() {
                     className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 p-6">
+                  <div className="absolute inset-x-0 bottom-0 p-6">
                     <p className="label max-w-[28ch] text-paper">{item.caption}</p>
-                    <span
-                      aria-hidden="true"
-                      className="text-lg text-paper/80 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1"
-                    >
-                      ↗
-                    </span>
                   </div>
                 </div>
               </Reveal>
@@ -179,7 +212,10 @@ export default function ProjectsPage() {
 
             <Reveal delay={200} className="mt-12 grid grid-cols-3 gap-px bg-line">
               {stats.slice(0, 3).map((stat) => (
-                <div key={stat.label} className="bg-paper pt-6 pr-6">
+                <div
+                  key={stat.label}
+                  className="bg-paper py-6 pr-6 pl-6 first:pl-0 last:pr-0"
+                >
                   <p className="font-display text-3xl tracking-tight">
                     <Counter to={stat.value} suffix={stat.suffix} />
                   </p>
@@ -194,7 +230,7 @@ export default function ProjectsPage() {
       {/* ══════════════ CTA ══════════════ */}
       <section className="relative overflow-hidden bg-ink text-paper">
         <Image
-          src="/images/sparks.jpg"
+          src="/images/pretreatment-tank.jpg"
           alt=""
           fill
           sizes="100vw"

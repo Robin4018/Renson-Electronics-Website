@@ -42,7 +42,7 @@ export default function ServicesPage() {
           muted
           loop
           playsInline
-          poster="/images/band-factory.jpg"
+          poster="/images/services-video-poster.jpg"
           className="absolute inset-0 h-full w-full object-cover"
         >
           <source src="/videos/services-hero.mp4" type="video/mp4" />
@@ -101,7 +101,7 @@ export default function ServicesPage() {
           >
             <Image
               src="/images/powder-coating.jpg"
-              alt="Spray gun coating metal panels inside a booth"
+              alt="Operator applying powder to a component on the coating line"
               fill
               sizes="(min-width: 768px) 46vw, 100vw"
               className="object-cover"
@@ -125,8 +125,11 @@ export default function ServicesPage() {
                 ["Cure window", "205 – 215°C"],
                 ["Max component", "15 ft length"],
                 ["Dispatch", "Within 48 hours"],
-              ].map(([label, value]) => (
-                <div key={label} className="bg-paper pt-6 pr-6 pb-6">
+              ].map(([label, value], i) => (
+                <div
+                  key={label}
+                  className={`bg-paper py-6 pr-6 ${i % 2 === 0 ? "pl-0" : "pl-6"}`}
+                >
                   <p className="label text-muted">{label}</p>
                   <p className="mt-2.5 text-lg tracking-tight">{value}</p>
                 </div>
@@ -263,7 +266,7 @@ export default function ServicesPage() {
             >
               <Image
                 src="/images/voltage-stabilizers.jpg"
-                alt="Engineer wiring an industrial control cabinet"
+                alt="Renson single-phase voltage stabilizer unit"
                 fill
                 sizes="(min-width: 768px) 38vw, 100vw"
                 className="object-cover"
@@ -337,7 +340,7 @@ export default function ServicesPage() {
           >
             <Image
               src="/images/battery-chargers.jpg"
-              alt="Electrical testing of a circuit assembly"
+              alt="Rensan battery charger — ammeter, output terminals and isolator switch"
               fill
               sizes="100vw"
               className="object-cover"
@@ -373,7 +376,7 @@ export default function ServicesPage() {
               href={`tel:${company.phoneHref}`}
               className="btn label border border-ink-line text-paper hover:border-paper"
             >
-              {company.phone}
+              Call us
             </a>
           </Reveal>
         </div>

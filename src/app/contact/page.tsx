@@ -46,6 +46,11 @@ export default function ContactPage() {
             </div>
           </dl>
         }
+        band={{
+          src: "/images/contact-band.jpg",
+          alt: "Seven-tank pre-treatment line under the overhead gantry at Unit II",
+          caption: "Seven-tank pre-treatment line and overhead gantry, Unit II",
+        }}
       />
 
       {/* ══════════════ 01 — ENQUIRY ══════════════ */}
@@ -60,71 +65,61 @@ export default function ContactPage() {
           </div>
 
           <div className="md:col-span-5">
-            <Reveal delay={140}>
-              <Eyebrow className="text-accent">01 — Our facilities</Eyebrow>
-              <h2 className="display-md mt-6">Two manufacturing units.</h2>
-            </Reveal>
+            <div className="md:sticky md:top-28">
+              <Reveal delay={140}>
+                <Eyebrow className="text-accent">01 — Our facilities</Eyebrow>
+                <h2 className="display-md mt-6">Two manufacturing units.</h2>
+              </Reveal>
 
-            <div className="mt-10 space-y-px bg-line">
-              {units.map((unit, i) => (
-                <Reveal key={unit.tag} delay={200 + i * 100} className="bg-paper py-7">
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="chip label text-accent">{unit.tag}</span>
-                    <span className="label text-muted">{unit.scope}</span>
+              <div className="mt-10 space-y-px bg-line">
+                {units.map((unit, i) => (
+                  <Reveal key={unit.tag} delay={200 + i * 100} className="bg-paper py-7">
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="chip label text-accent">{unit.tag}</span>
+                      <span className="label text-muted">{unit.scope}</span>
+                    </div>
+
+                    <dl className="mt-6 space-y-2.5">
+                      <div className="flex items-baseline justify-between gap-6">
+                        <dt className="label text-muted">Phone</dt>
+                        <dd>
+                          <a
+                            href={`tel:${unit.phone.replace(/\s/g, "")}`}
+                            className="text-sm tracking-tight transition-colors hover:text-accent"
+                          >
+                            {unit.phone}
+                          </a>
+                        </dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-6">
+                        <dt className="label text-muted">Hours</dt>
+                        <dd className="text-sm">{company.hours}</dd>
+                      </div>
+                    </dl>
+                  </Reveal>
+                ))}
+              </div>
+
+              <Reveal delay={420} className="mt-10 rounded-[10px] border border-line bg-paper-dim p-7">
+                <p className="label text-muted">Compliance</p>
+                <dl className="mt-5 space-y-3">
+                  <div className="flex items-baseline justify-between gap-6">
+                    <dt className="text-sm text-ink/70">GST</dt>
+                    <dd className="text-sm font-medium tracking-tight">{company.gst}</dd>
                   </div>
-
-                  <h3 className="mt-6 text-xl font-medium tracking-tight">{unit.name}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/70">{unit.address}</p>
-
-                  <dl className="mt-6 space-y-2.5">
-                    <div className="flex items-baseline justify-between gap-6">
-                      <dt className="label text-muted">Phone</dt>
-                      <dd>
-                        <a
-                          href={`tel:${unit.phone.replace(/\s/g, "")}`}
-                          className="text-sm tracking-tight transition-colors hover:text-accent"
-                        >
-                          {unit.phone}
-                        </a>
-                      </dd>
-                    </div>
-                    <div className="flex items-baseline justify-between gap-6">
-                      <dt className="label text-muted">Hours</dt>
-                      <dd className="text-sm">{company.hours}</dd>
-                    </div>
-                  </dl>
-
-                  <a
-                    href={unit.map}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn label mt-7 border border-line text-ink hover:border-ink"
-                  >
-                    View on map ↗
-                  </a>
-                </Reveal>
-              ))}
+                  <div className="flex items-baseline justify-between gap-6">
+                    <dt className="text-sm text-ink/70">UDYAM</dt>
+                    <dd className="text-sm font-medium tracking-tight">{company.udyam}</dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-6">
+                    <dt className="text-sm text-ink/70">Constitution</dt>
+                    <dd className="text-sm font-medium tracking-tight">
+                      {company.constitution}
+                    </dd>
+                  </div>
+                </dl>
+              </Reveal>
             </div>
-
-            <Reveal delay={420} className="mt-10 rounded-[10px] border border-line bg-paper-dim p-7">
-              <p className="label text-muted">Compliance</p>
-              <dl className="mt-5 space-y-3">
-                <div className="flex items-baseline justify-between gap-6">
-                  <dt className="text-sm text-ink/70">GST</dt>
-                  <dd className="text-sm font-medium tracking-tight">{company.gst}</dd>
-                </div>
-                <div className="flex items-baseline justify-between gap-6">
-                  <dt className="text-sm text-ink/70">UDYAM</dt>
-                  <dd className="text-sm font-medium tracking-tight">{company.udyam}</dd>
-                </div>
-                <div className="flex items-baseline justify-between gap-6">
-                  <dt className="text-sm text-ink/70">Constitution</dt>
-                  <dd className="text-sm font-medium tracking-tight">
-                    {company.constitution}
-                  </dd>
-                </div>
-              </dl>
-            </Reveal>
           </div>
         </div>
       </section>
@@ -141,20 +136,20 @@ export default function ContactPage() {
           <div className="mt-14 grid gap-8 md:mt-20 md:grid-cols-2">
             {units.map((unit, i) => (
               <Reveal key={unit.tag} delay={i * 120}>
-                <div className="frame relative aspect-[4/3] w-full border border-line bg-paper transition-colors duration-300 hover:border-ink">
-                  {/* Google's address-query embed always draws a place-info
-                      card over the top ~9rem — crop it out by rendering the
-                      iframe taller and shifting it up by the same amount,
-                      which leaves the map, pin and required attribution
-                      footer untouched (the footer stays glued to the
-                      container's bottom edge since height and top-offset
-                      cancel out). */}
+                {/* Google draws a place-info card over the top of this embed.
+                    Crop it by rendering the iframe taller and shifting it up by
+                    the same amount — height and offset cancel, so the map fills
+                    the frame and the attribution strip stays glued to the
+                    bottom edge. 11rem, not 9: at 9 a sliver of the card's white
+                    lower edge still showed, and the card grows taller for a
+                    place that carries a rating. */}
+                <div className="frame group relative aspect-[4/3] w-full overflow-hidden border border-line bg-paper-dim transition-colors duration-500 hover:border-ink">
                   <iframe
                     src={unit.embed}
                     title={`Map of ${unit.name}`}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="absolute -top-36 inset-x-0 h-[calc(100%+9rem)] w-full border-0"
+                    className="map-embed absolute inset-x-0 -top-44 h-[calc(100%+11rem)] w-full border-0"
                   />
                 </div>
                 <div className="mt-6 flex flex-wrap items-start justify-between gap-4">
@@ -213,7 +208,7 @@ export default function ContactPage() {
                     href={`tel:${company.phoneHref}`}
                     className="btn label border border-ink-line text-paper hover:border-paper"
                   >
-                    {company.phone}
+                    Call us
                   </a>
                 </div>
                 <p className="label mt-7 text-muted-dim">{company.hours}</p>
