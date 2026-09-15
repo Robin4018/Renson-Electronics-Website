@@ -48,8 +48,8 @@ export default function ContactPage() {
         }
         band={{
           src: "/images/contact-band.jpg",
-          alt: "Seven-tank pre-treatment line under the overhead gantry at Unit II",
-          caption: "Seven-tank pre-treatment line and overhead gantry, Unit II",
+          alt: "Two workers loading a finished fabricated part into a van for dispatch",
+          caption: "Finished work loading out for dispatch",
         }}
       />
 
