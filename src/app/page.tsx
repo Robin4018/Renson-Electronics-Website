@@ -24,7 +24,7 @@ export default function HomePage() {
       {/* ══════════════ HERO ══════════════ */}
       <section
         data-dark-hero
-        className="relative flex h-[100svh] min-h-[600px] w-full flex-col justify-end overflow-hidden"
+        className="relative flex h-[92svh] min-h-[480px] w-full flex-col justify-end overflow-hidden md:h-[100svh] md:min-h-[600px]"
       >
         <video
           autoPlay
