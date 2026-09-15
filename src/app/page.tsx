@@ -174,12 +174,16 @@ export default function HomePage() {
       {/* ══════════════ STATS ══════════════ */}
       <section className="border-y border-line bg-paper-dim">
         <div className="shell">
-          <dl className="grid grid-cols-2 gap-x-10 gap-y-10 md:grid-cols-3 md:gap-x-12 lg:grid-cols-5 lg:gap-x-0 lg:gap-y-0">
+          {/* gap-y is 0 at every width: each cell draws its own top rule, so a
+              row gap put empty space between a cell and the rule belonging to
+              the cell beneath it — 120px of it on a phone, once the cells' own
+              py was counted twice. The rules carry the rhythm instead. */}
+          <dl className="grid grid-cols-2 gap-x-8 md:grid-cols-3 md:gap-x-12 lg:grid-cols-5 lg:gap-x-0">
             {stats.map((stat, i) => (
               <Reveal
                 key={stat.label}
                 delay={i * 70}
-                className="hairline flex flex-col py-10 md:py-12 lg:border-r lg:border-line lg:pr-10 lg:pl-10 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
+                className="hairline flex flex-col py-7 last:col-span-2 md:py-10 md:last:col-span-1 lg:border-r lg:border-line lg:pr-10 lg:pl-10 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
               >
                 <dt className="sr-only">{stat.label}</dt>
                 <dd className="display-md font-display text-ink">
