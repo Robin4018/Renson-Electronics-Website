@@ -84,14 +84,6 @@ export function SiteFooter() {
                 </li>
               ))}
             </ul>
-            {/* The address is the same for writing as for visiting, so the
-                email closes the block rather than floating free of it. */}
-            <a
-              href={`mailto:${company.email}`}
-              className="mt-7 inline-block text-sm text-paper/85 underline decoration-ink-line underline-offset-4 transition-colors hover:text-accent-soft"
-            >
-              {company.email}
-            </a>
           </div>
         </div>
 
