@@ -219,20 +219,32 @@ export function SiteHeader() {
             ))}
           </nav>
 
+          {/* Two buttons rather than the number and address set as text. A
+              pill is a plain target for a thumb and says what tapping it
+              does; the raw strings only read as contact details once you
+              already know they are links. .btn carries its own height, so
+              neither needs the .tap hit-area rule any more. */}
           <div className="pt-10">
             <p className="label mb-4 text-muted-dim">Get in touch</p>
-            <a
-              href={`tel:${company.phoneHref}`}
-              className="tap block text-xl tracking-tight text-paper"
-            >
-              {company.phone}
-            </a>
-            <a
-              href={`mailto:${company.email}`}
-              className="tap mt-1 block text-sm text-muted-dim"
-            >
-              {company.email}
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={`tel:${company.phoneHref}`}
+                onClick={() => setOpen(false)}
+                className="btn label group border border-paper bg-paper text-ink hover:bg-transparent hover:text-paper"
+              >
+                Call us
+                <span className="btn-arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+              <a
+                href={`mailto:${company.email}`}
+                onClick={() => setOpen(false)}
+                className="btn label border border-ink-line text-paper hover:border-paper"
+              >
+                Email us
+              </a>
+            </div>
           </div>
         </div>
       </div>
