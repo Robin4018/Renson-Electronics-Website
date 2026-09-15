@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { company, serviceCategories } from "@/lib/content";
 import { Eyebrow } from "./eyebrow";
 
@@ -162,40 +162,12 @@ export function EnquiryForm() {
         <label htmlFor="category" className="label text-muted">
           Service category
         </label>
-        {/* appearance-none stripped the native arrow and nothing replaced it,
-            so the control read as a line of text with no sign it opened. The
-            chevron is drawn back in and takes no pointer events, so the whole
-            width still opens the list. The option colours are set too: the
-            list itself is drawn by the operating system, but Chrome honours
-            these, which keeps the open list off stark system white. */}
-        <div className="relative mt-3">
-          <select
-            id="category"
-            value={fields.category}
-            onChange={(e) => set("category")(e.target.value)}
-            className="w-full cursor-pointer appearance-none border-b border-line bg-transparent py-3 pr-9 text-base tracking-tight transition-colors focus:border-ink focus:outline-none [&>option]:bg-paper [&>option]:text-ink"
-          >
-            {serviceCategories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-muted"
-          >
-            <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-              <path
-                d="M1 1.5 6 6.5 11 1.5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
-        </div>
+        <CategorySelect
+          id="category"
+          value={fields.category}
+          options={serviceCategories}
+          onChange={set("category")}
+        />
       </div>
 
       <div className="mt-6">
@@ -267,6 +239,148 @@ function Field({
         }`}
       />
       {error ? <p className="label mt-2.5 text-accent">{error}</p> : null}
+    </div>
+  );
+}
+
+/**
+ * The service category picker.
+ *
+ * A native <select> renders its open list through the operating system, so
+ * nothing about that list — its typeface, its white ground, the blue band on
+ * the highlighted row — can be reached from the page. Only the closed control
+ * was ever ours to style. This is a listbox instead, so the open state matches
+ * the rest of the form.
+ *
+ * It follows the combobox pattern rather than inventing one: the trigger owns
+ * focus and announces itself with aria-expanded, the open list is a listbox
+ * whose current row is named by aria-activedescendant, and arrows, Home, End,
+ * Enter, Space and Escape all do what they do in a native select.
+ */
+function CategorySelect({
+  id,
+  value,
+  options,
+  onChange,
+}: {
+  id: string;
+  value: string;
+  options: readonly string[];
+  onChange: (value: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(() => Math.max(0, options.indexOf(value)));
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  // A pointer landing anywhere else closes the list, as a native one does.
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (event: PointerEvent) => {
+      if (!wrapRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [open]);
+
+  const choose = (index: number) => {
+    onChange(options[index]);
+    setActive(index);
+    setOpen(false);
+    triggerRef.current?.focus();
+  };
+
+  const onKeyDown = (event: React.KeyboardEvent) => {
+    if (!open) {
+      if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActive(Math.max(0, options.indexOf(value)));
+        setOpen(true);
+      }
+      return;
+    }
+
+    if (event.key === "Escape" || event.key === "Tab") {
+      setOpen(false);
+      if (event.key === "Escape") triggerRef.current?.focus();
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActive((i) => Math.min(i + 1, options.length - 1));
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActive((i) => Math.max(i - 1, 0));
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      setActive(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      setActive(options.length - 1);
+    } else if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      choose(active);
+    }
+  };
+
+  return (
+    <div ref={wrapRef} className="relative mt-3">
+      <button
+        type="button"
+        id={id}
+        ref={triggerRef}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-activedescendant={open ? `${id}-option-${active}` : undefined}
+        onClick={() => {
+          setActive(Math.max(0, options.indexOf(value)));
+          setOpen((o) => !o);
+        }}
+        onKeyDown={onKeyDown}
+        className="flex w-full cursor-pointer items-center justify-between gap-3 border-b border-line bg-transparent py-3 text-left text-base tracking-tight transition-colors hover:border-ink focus-visible:border-ink focus-visible:outline-none"
+      >
+        <span className="truncate">{value}</span>
+        <svg
+          aria-hidden="true"
+          width="12"
+          height="8"
+          viewBox="0 0 12 8"
+          fill="none"
+          className={`shrink-0 text-muted transition-transform duration-300 ${
+            open ? "rotate-180" : ""
+          }`}
+        >
+          <path
+            d="M1 1.5 6 6.5 11 1.5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      {open ? (
+        <ul
+          role="listbox"
+          aria-labelledby={id}
+          className="absolute inset-x-0 top-[calc(100%+0.5rem)] z-30 overflow-hidden rounded-[10px] border border-line bg-paper py-1 shadow-[0_20px_44px_-26px_rgba(24,22,20,0.55)]"
+        >
+          {options.map((option, index) => (
+            <li
+              key={option}
+              id={`${id}-option-${index}`}
+              role="option"
+              aria-selected={option === value}
+              onPointerEnter={() => setActive(index)}
+              onClick={() => choose(index)}
+              className={`cursor-pointer px-4 py-3 text-sm transition-colors ${
+                index === active ? "bg-paper-dim" : ""
+              } ${option === value ? "font-medium text-ink" : "text-muted"}`}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </div>
   );
 }
