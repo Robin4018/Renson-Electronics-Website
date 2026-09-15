@@ -184,6 +184,12 @@ export default function ContactPage() {
                   >
                     Call us
                   </a>
+                  <a
+                    href={`mailto:${company.email}`}
+                    className="btn label border border-ink-line text-paper hover:border-paper"
+                  >
+                    Email us
+                  </a>
                 </div>
                 <p className="label mt-7 text-muted-dim">{company.hours}</p>
               </Reveal>
