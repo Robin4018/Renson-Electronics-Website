@@ -47,9 +47,9 @@ export default function ContactPage() {
           </dl>
         }
         band={{
-          src: "/images/contact-band.jpg",
-          alt: "Two workers loading a finished fabricated part into a van for dispatch",
-          caption: "Finished work loading out for dispatch",
+          src: "/images/contact-band-motor-bodies.jpg",
+          alt: "Rows of machined aluminium motor bodies stacked in the works",
+          caption: "Aluminium motor bodies stacked ahead of the coating line",
         }}
       />
 
