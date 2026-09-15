@@ -237,7 +237,7 @@ export const leadership = [
 export const ceoMessage = {
   name: "Renita Katherine",
   role: "CEO, Renson Electronics",
-  photo: "/images/Team/renita.jpg",
+  photo: "/images/Team/renita-ceo.jpg",
   quote:
     "Every panel we ship carries four decades of reputation with it. My role is simple - protect that standard as we grow, so the next order is judged exactly the same way the first one was, on whether it lasts.",
 };
