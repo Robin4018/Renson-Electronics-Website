@@ -26,14 +26,14 @@ export function PageHero({
     | { src?: never; video: string; poster?: string; alt: string; caption: string };
 }) {
   return (
-    <section className="relative pt-28 md:pt-32 lg:pt-36">
+    <section className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36">
       <div className="shell">
         <Reveal className="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-2 pb-7">
           <Eyebrow className="text-accent">{eyebrow}</Eyebrow>
           {meta ? <p className="label hidden text-muted sm:block">{meta}</p> : null}
         </Reveal>
 
-        <div className="hairline pt-10 md:pt-14">
+        <div className="hairline pt-8 md:pt-14">
           <Reveal variant="lines">
             <h1 className="display-xl">
               <MaskLine>{lines[0]}</MaskLine>
@@ -47,8 +47,8 @@ export function PageHero({
         </div>
 
         <div
-          className={`grid grid-cols-1 gap-x-8 gap-y-10 pt-12 md:grid-cols-12 md:pt-16 ${
-            band ? "pb-16 md:pb-20" : "pb-0"
+          className={`grid grid-cols-1 gap-x-8 gap-y-8 pt-8 md:grid-cols-12 md:gap-y-10 md:pt-16 ${
+            band ? "pb-10 md:pb-20" : "pb-0"
           }`}
         >
           <div className="md:col-span-6 lg:col-span-5">

@@ -59,7 +59,7 @@ export default function ContactPage() {
                         <dd>
                           <a
                             href={`tel:${unit.phone.replace(/\s/g, "")}`}
-                            className="text-sm tracking-tight transition-colors hover:text-accent"
+                            className="tap text-sm tracking-tight transition-colors hover:text-accent"
                           >
                             {unit.phone}
                           </a>

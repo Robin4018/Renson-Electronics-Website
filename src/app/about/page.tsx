@@ -139,7 +139,7 @@ export default function AboutPage() {
 
           <div className="mt-10 grid gap-px overflow-hidden rounded-[10px] border border-line bg-line md:mt-14 md:grid-cols-2">
             {leadership.map((person, i) => (
-              <Reveal key={person.name} delay={i * 110} className="bg-paper-dim p-8 md:p-10">
+              <Reveal key={person.name} delay={i * 110} className="min-w-0 bg-paper-dim p-6 md:p-10">
                 <div className="flex items-start gap-5">
                   <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-ink/15">
                     <Image
@@ -162,11 +162,11 @@ export default function AboutPage() {
                 </div>
 
                 <dl className="mt-9 flex gap-px bg-line">
-                  <div className="flex-1 bg-paper-dim pr-6">
+                  <div className="min-w-0 flex-1 bg-paper-dim pr-4 md:pr-6">
                     <dt className="label text-muted">Experience</dt>
                     <dd className="mt-2.5 text-lg tracking-tight">{person.experience}</dd>
                   </div>
-                  <div className="flex-1 bg-paper-dim pl-6">
+                  <div className="min-w-0 flex-1 bg-paper-dim pl-4 md:pl-6">
                     <dt className="label text-muted">Domain</dt>
                     <dd className="mt-2.5 text-lg tracking-tight">{person.domain}</dd>
                   </div>

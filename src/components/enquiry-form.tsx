@@ -162,18 +162,40 @@ export function EnquiryForm() {
         <label htmlFor="category" className="label text-muted">
           Service category
         </label>
-        <select
-          id="category"
-          value={fields.category}
-          onChange={(e) => set("category")(e.target.value)}
-          className="mt-3 w-full appearance-none border-b border-line bg-transparent py-3 text-base tracking-tight transition-colors focus:border-ink focus:outline-none"
-        >
-          {serviceCategories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+        {/* appearance-none stripped the native arrow and nothing replaced it,
+            so the control read as a line of text with no sign it opened. The
+            chevron is drawn back in and takes no pointer events, so the whole
+            width still opens the list. The option colours are set too: the
+            list itself is drawn by the operating system, but Chrome honours
+            these, which keeps the open list off stark system white. */}
+        <div className="relative mt-3">
+          <select
+            id="category"
+            value={fields.category}
+            onChange={(e) => set("category")(e.target.value)}
+            className="w-full cursor-pointer appearance-none border-b border-line bg-transparent py-3 pr-9 text-base tracking-tight transition-colors focus:border-ink focus:outline-none [&>option]:bg-paper [&>option]:text-ink"
+          >
+            {serviceCategories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-muted"
+          >
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+              <path
+                d="M1 1.5 6 6.5 11 1.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+        </div>
       </div>
 
       <div className="mt-6">

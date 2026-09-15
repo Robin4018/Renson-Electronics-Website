@@ -25,8 +25,14 @@ export function Eyebrow({
   className?: string;
 }) {
   return (
-    <p className={`label inline-flex items-center gap-3 ${className}`.trim()}>
-      <span aria-hidden="true" className="h-px w-7 shrink-0 bg-current opacity-40" />
+    <p className={`label inline-flex items-center gap-0 md:gap-3 ${className}`.trim()}>
+      {/* The rule is desktop only. On a phone the label sits close under
+          whatever precedes it and a leading dash reads as a stray mark
+          rather than as a section marker. */}
+      <span
+        aria-hidden="true"
+        className="hidden h-px w-7 shrink-0 bg-current opacity-40 md:block"
+      />
       {children}
     </p>
   );
