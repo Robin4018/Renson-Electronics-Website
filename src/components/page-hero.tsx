@@ -68,7 +68,7 @@ export function PageHero({
         <Reveal
           variant="clip"
           delay={160}
-          className="relative block h-[36vh] min-h-[240px] w-full md:h-[48vh]"
+          className="relative block h-[36svh] min-h-[240px] w-full md:h-[48svh]"
         >
           {band.src ? (
             <Image

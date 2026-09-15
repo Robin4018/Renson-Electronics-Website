@@ -47,10 +47,15 @@ export default function HomePage() {
             delay={320}
             className="mt-10 flex flex-wrap items-center justify-between gap-x-10 gap-y-6 border-t border-paper/25 pt-6"
           >
+            {/* On a phone the slash let this break mid-phrase ("… Tamil Nadu
+                / MSME" then "Registered"). Below sm the two facts take their
+                own lines and the separator steps out. */}
             <p className="label text-paper/75">
-              Est. {company.since} — {company.location}
-              <span className="mx-3 text-paper/40">/</span>
-              MSME Registered
+              <span className="block sm:inline">
+                Est. {company.since} — {company.location}
+              </span>
+              <span className="mx-3 hidden text-paper/40 sm:inline">/</span>
+              <span className="block sm:inline">MSME Registered</span>
             </p>
 
             <Link
@@ -96,7 +101,7 @@ export default function HomePage() {
       <Reveal
         variant="clip"
         delay={160}
-        className="relative block h-[36vh] min-h-[240px] w-full md:h-[48vh]"
+        className="relative block h-[36svh] min-h-[240px] w-full md:h-[48svh]"
       >
         <Image
           src="/images/assembly-floor.jpg"
@@ -356,7 +361,7 @@ export default function HomePage() {
                     href={unit.map}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="label text-muted-dim transition-colors duration-300 hover:text-paper"
+                    className="tap label text-muted-dim transition-colors duration-300 hover:text-paper"
                   >
                     View on map ↗
                   </a>

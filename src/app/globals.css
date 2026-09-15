@@ -396,3 +396,24 @@
     transition: none;
   }
 }
+
+/* ── Touch targets ─────────────────────────────────────────
+   A mouse can hit a 16px link; a thumb cannot. On coarse
+   pointers these links grow a thumb-sized hit rectangle from a
+   pseudo-element, so the target gets bigger while the layout
+   stays exactly where it was — the alternative, padding every
+   small link up to 44px, would have added roughly 200px to the
+   footer alone on a phone. */
+@media (pointer: coarse) {
+  .tap {
+    position: relative;
+  }
+
+  .tap::after {
+    content: "";
+    position: absolute;
+    inset: -0.7rem -0.6rem;
+    /* purely a hit area */
+    background: transparent;
+  }
+}

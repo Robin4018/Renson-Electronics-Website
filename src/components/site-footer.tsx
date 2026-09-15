@@ -41,7 +41,7 @@ export function SiteFooter() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-paper/85 transition-colors duration-300 hover:text-accent-soft"
+                    className="tap text-sm text-paper/85 transition-colors duration-300 hover:text-accent-soft"
                   >
                     {item.label}
                   </Link>
@@ -57,7 +57,7 @@ export function SiteFooter() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-paper/85 transition-colors duration-300 hover:text-accent-soft"
+                    className="tap text-sm text-paper/85 transition-colors duration-300 hover:text-accent-soft"
                   >
                     {item.label}
                   </Link>
@@ -77,7 +77,7 @@ export function SiteFooter() {
                   </p>
                   <a
                     href={`tel:${unit.phone.replace(/\s/g, "")}`}
-                    className="mt-1.5 inline-block text-sm text-muted-dim transition-colors hover:text-paper"
+                    className="tap mt-1.5 inline-block text-sm text-muted-dim transition-colors hover:text-paper"
                   >
                     {unit.phone}
                   </a>

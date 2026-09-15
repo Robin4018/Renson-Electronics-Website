@@ -37,7 +37,9 @@ export function Logo({
         priority={priority}
         draggable={false}
         className="artwork-protected w-auto"
-        style={{ height }}
+        /* width alongside height: with only one of the two set in CSS, Next
+           warns that the intrinsic aspect ratio may not be preserved. */
+        style={{ height, width: "auto" }}
       />
       {/* Shield: takes the right-click and the drag so the image never does. */}
       <span aria-hidden className="absolute inset-0" />
