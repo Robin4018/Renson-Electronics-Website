@@ -23,10 +23,13 @@ export const metadata: Metadata = {
     "Electrostatic powder coating with a 10-step process, voltage stabilizers from 0.2 to 10 KVA, and industrial battery chargers — manufactured in Coimbatore.",
 };
 
+// `short` is what the rail shows on a phone: the three full labels come to
+// roughly 437px of chips against 317px of usable width, so they could only
+// ever be reached by scrolling. Shortened, all three sit on screen at once.
 const sections = [
-  { id: "powder-coating", label: "Powder Coating" },
-  { id: "voltage-stabilizers", label: "Voltage Stabilizers" },
-  { id: "battery-chargers", label: "Battery Chargers" },
+  { id: "powder-coating", label: "Powder Coating", short: "Coating" },
+  { id: "voltage-stabilizers", label: "Voltage Stabilizers", short: "Stabilizers" },
+  { id: "battery-chargers", label: "Battery Chargers", short: "Chargers" },
 ];
 
 export default function ServicesPage() {
