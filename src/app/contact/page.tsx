@@ -110,20 +110,17 @@ export default function ContactPage() {
           <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-2">
             {units.map((unit, i) => (
               <Reveal key={unit.tag} delay={i * 120}>
-                {/* Google draws a place-info card over the top of this embed.
-                    Crop it by rendering the iframe taller and shifting it up by
-                    the same amount — height and offset cancel, so the map fills
-                    the frame and the attribution strip stays glued to the
-                    bottom edge. 11rem, not 9: at 9 a sliver of the card's white
-                    lower edge still showed, and the card grows taller for a
-                    place that carries a rating. */}
+                {/* No crop: the embed is keyed to coordinates, so it arrives
+                    without the place-info card that used to be cropped off the
+                    top. That crop was also pulling the map's centre upward with
+                    it, which is why the pin sat high in the frame. */}
                 <div className="frame group relative aspect-[4/3] w-full overflow-hidden border border-line bg-paper-dim transition-colors duration-500 hover:border-ink">
                   <iframe
                     src={unit.embed}
                     title={`Map of ${unit.name}`}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="map-embed absolute inset-x-0 -top-44 h-[calc(100%+11rem)] w-full border-0"
+                    className="map-embed absolute inset-0 h-full w-full border-0"
                   />
                 </div>
                 <div className="mt-6 flex flex-wrap items-start justify-between gap-4">

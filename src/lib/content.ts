@@ -122,12 +122,13 @@ export const units = [
       "Near Electronic Industrial Estate",
     ],
     map: "https://maps.app.goo.gl/aSx8v3pvc7Fh9HXQA",
-    // Named-place embed, not the bare coordinate form: the coordinate embed
-    // renders without Google's "Map data ©" strip, which the Maps terms
-    // require us to display, and its pin is unlabelled. The place card this
-    // form draws is cropped off in the contact page instead.
+    // Coordinate embed. The named-place form draws a place-info card over the
+    // top of the map, and cropping that card off shifts the map's centre up
+    // with it, so the pin never sits in the middle of the frame. Coordinates
+    // arrive with no card, which leaves the pin centred and the attribution
+    // strip in place. (The strip renders a few seconds after the tiles.)
     embed:
-      "https://www.google.com/maps?q=Rensan+Electronics,+Kalapatti,+Coimbatore&output=embed",
+      "https://www.google.com/maps?q=11.0519265,77.0367128&z=16&output=embed",
   },
   {
     tag: "Unit II",
@@ -156,7 +157,7 @@ export const units = [
     ],
     map: "https://maps.app.goo.gl/BBjvUSWr2p6aAHg77",
     embed:
-      "https://www.google.com/maps?q=Renson+Electronics+%26+Powder+Coating,+Vellanapatti,+Coimbatore&output=embed",
+      "https://www.google.com/maps?q=11.0953937,77.0909014&z=16&output=embed",
   },
 ];
 
